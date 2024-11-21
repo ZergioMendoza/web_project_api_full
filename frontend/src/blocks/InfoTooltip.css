@@ -1,0 +1,45 @@
+.popup {
+    position: fixed; /* Fija el popup en relación a la ventana */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+    opacity: 0; /* Oculto por defecto */
+    transition: opacity 0.3s ease; /* Transición para la opacidad */
+    pointer-events: none; /* Evita la interacción con el popup cuando está oculto */
+  }
+  
+  .popup_opened {
+    opacity: 1; /* Visible cuando está abierto */
+    pointer-events: auto; /* Permite la interacción cuando está visible */
+  }
+  
+  .popup__content {
+    position: relative; /* Necesario para las medidas y posición del contenido */
+    width: 430px; /* Ancho del popup */
+    height: 330px; /* Alto del popup */
+    background-color: white; /* Color de fondo del popup */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrar verticalmente el contenido */
+    align-items: center; /* Centrar horizontalmente el contenido */
+  }
+  
+  .popup__status-icon {
+    width: 100%;  /* Ajustar el ancho para que ocupe el contenedor */
+    height: auto; /* Mantener la relación de aspecto */
+    max-width: 300px; /* Limitar el tamaño máximo si es necesario */
+    margin-bottom: 20px; /* Espacio entre la imagen y el mensaje */
+  }
+  
+  .popup__message {
+    font-size: 16px; /* Tamaño de la fuente del mensaje */
+    text-align: center; /* Centrar el mensaje */
+  }
+  

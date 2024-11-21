@@ -1,0 +1,42 @@
+@import url(./vendor/normalize.css);
+@import url(./vendor/font.css);
+
+@import url(./blocks/body.css);
+@import url(./blocks/header.css);
+@import url(./blocks/profile.css);
+@import url(./blocks/ButtonProfile.css);
+@import url(./blocks/cards.css);
+/*@import url(./blocks/InfoTooltip.css);*/
+@import url(./blocks/popup.css);
+@import url(./blocks/footer.css);
+@import url(./blocks/auth.css);
+@import url(./blocks/register.css);
+@import url(./blocks/login.css);
+
+.item {
+  background-color: #be0303;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+
+
+.item_photo {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1.25rem 1.06rem;
+  justify-content: space-between;
+  font-size: 0;
+}
+
+.item_info {
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  width: 92%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0;
+}

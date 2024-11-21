@@ -1,0 +1,29 @@
+.footer__copyright {
+    color: #545454;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 1.125rem;
+    margin: 4.25rem 0 0;
+}
+
+.footer {
+    color: #ffffff;
+  }
+
+ 
+  @media screen and (max-width: 576px) {
+    .footer {
+      text-align: center;
+      margin: 0 19px;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,52 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #282c34;
+  color: rgb(230, 29, 29);
+  position: fixed; /* Hace que el header quede fijo en la parte superior */
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px; /* Fija la altura del header */
+  z-index: 1000; /* Se asegura de que esté siempre encima */
+}
+
+.header__logo {
+  height: 40px;
+}
+
+.header__nav {
+  display: flex;
+  gap: 15px;
+}
+
+.header__auth-links {
+  display: flex;
+  gap: 15px;
+}
+
+.header__link {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.header__link:hover {
+  color: #61dafb;
+}
+
+.header__logout {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.header__logout:hover {
+  color: #61dafb;
+}

@@ -1,0 +1,56 @@
+/* Estilo general del formulario de registro sin cuadro */
+.register {
+  background-color: transparent; /* Elimina el color de fondo */
+  padding: 0; /* Elimina el padding */
+  border-radius: 0; /* Elimina los bordes redondeados */
+  box-shadow: none; /* Elimina la sombra */
+  max-width: none; /* Ancho máximo sin restricción */
+  margin: 0 auto; /* Centrado del formulario */
+}
+
+.register h2 {
+  text-align: center;
+  color: #ffffff; /* Color del título */
+  margin-bottom: 20px;
+}
+
+.register form {
+  display: flex;
+  flex-direction: column;
+}
+
+.register input {
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.register button {
+  padding: 12px;
+  background-color: #1212ce;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.auth p {
+  margin-top: 10px; /* Espacio entre el botón y el texto */
+  font-size: 14px; /* Tamaño de fuente más pequeño */
+  text-align: center; /* Centrar el texto */
+  color: aqua;
+}
+
+.auth p a {
+  color: #ffffff; /* Color del enlace */
+  text-decoration: none; /* Sin subrayado */
+}
+
+.auth p a:hover {
+  text-decoration: underline; /* Subrayado al pasar el mouse */
+}

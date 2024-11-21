@@ -1,0 +1,26 @@
+.page {
+  max-width: 1280px;
+  min-height: 100vh; /* Garantiza que cubra toda la altura de la ventana */
+  display: flex;
+  flex-direction: column; /* Asegura que el contenido esté en columna */
+  justify-content: space-between; /* Espacia contenido, como header y footer */
+  background: linear-gradient(to right, #132436 0%, #A50044 100%);
+  margin: 0 auto;
+  padding: 2.8rem 12.5rem 3.75rem;
+  box-sizing: border-box; /* Incluye padding en las dimensiones totales */
+}
+
+@media screen and (max-width: 992px) {
+  .page {
+    width: 100%;
+    padding: 1.75rem 4rem 2.25rem;
+    box-sizing: border-box;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .page {
+    width: 100%;
+    padding: 1.75rem 0 2.25rem;
+  }
+}

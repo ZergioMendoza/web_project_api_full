@@ -1,0 +1,212 @@
+.popup {
+  display: none; /* Ocultar por defecto */
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  justify-content: center;
+  align-items: center;
+}
+
+.popup__title {
+  color: #000;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 1.5rem;
+  margin: 0 0 1.5rem;
+}
+.popup__container {
+  width: 26.875rem;
+  position: relative;
+  border-radius: 0.625rem;
+  background-color: #fff;
+  padding: 2.125rem 2.25rem 2.2819rem;
+  box-sizing: border-box;
+}
+
+.popup__input {
+  border: none;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  display: block;
+  padding: 0.8125rem 0.3125rem;
+  margin-top: 1.0625rem;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 0.875rem;
+  box-sizing: border-box;
+}
+
+.popup__container_image {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent; /* Elimina fondo del contenedor */
+  max-width: 90%; /* Ajusta ancho máximo */
+  max-height: 90%; /* Ajusta alto máximo */
+  overflow: hidden; /* Evita desbordamientos */
+}
+
+.popup__opened {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup__submit {
+  margin: 3rem 0 0;
+  width: 100%;
+  padding: 0.875rem;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 0.125rem;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 1.125rem;
+  cursor: pointer;
+}
+.popup__submit:hover {
+  opacity: 0.8;
+}
+.popup__submit:disabled {
+  opacity: 0.8;
+  background-color: #fff;
+  border: 1px solid;
+  color: grey;
+}
+
+.popup__close {
+  width: 10px; /* Ancho del botón */
+  height: 2.5rem; /* Altura del botón */
+  border: none; /* Sin borde */
+  position: absolute;
+  top: -2.5rem; /* Posición en la parte superior */
+  right: -2.5rem; /* Posición en la parte derecha */
+  cursor: pointer;
+  background-image: url(../images/icon/close-button.svg); /* Imagen de fondo */
+  background-size: contain; /* Ajusta la imagen para que encaje dentro del botón */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-position: center; /* Centra la imagen dentro del botón */
+}
+
+.popup__close img {
+  width: 10px;
+  height: 20px;
+
+
+}
+
+.popup__close {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  position: absolute;
+  top: -2.5rem;
+  right: -2.5rem;
+  cursor: pointer;
+  
+}
+
+.popup__close:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 576px) {
+  .popup__close {
+    top: -3rem;
+    right: 0.2rem;
+  }
+  .popup__container {
+    width: 88%;
+    box-sizing: border-box;
+    padding: 1.56rem 1.38rem;
+  }
+  .popup__title {
+    font-size: 1.125rem;
+    margin-bottom: 4.5rem;
+  }
+}
+
+.newplaces {
+  display: none;
+}
+
+
+.popup__input_type_error {
+  border-color: rgb(255, 0, 0);
+}
+
+.popup__button_disabled {
+  border-color: rgb(0, 23, 99);
+}
+
+.popup__newplaces-submit {
+  margin: 3rem 0 0;
+  width: 100%;
+  padding: 0.875rem;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 0.125rem;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 1.125rem;
+  cursor: pointer;
+}
+
+
+
+.popup__input-error {
+  color: rgb(255, 24, 8); /* Color del mensaje de error */
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.popup__input_type_error + .popup__input-error {
+  visibility: visible; /* Mostrar el mensaje de error cuando hay error */
+  border-color: rgb(255, 0, 0);
+}
+
+
+.popup__submit-newPlaces {
+  margin: 3rem 0 0;
+  width: 100%;
+  padding: 0.875rem;
+  background-color: #080808;
+  color: #fff;
+  border: none;
+  border-radius: 0.125rem;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 1.125rem;
+  cursor: pointer;
+}
+
+.popup__submit-newPlaces:disabled {
+  opacity: 0.8;
+  background-color: #ffffff;
+  border: 1px solid;
+  color: rgb(0, 0, 0);
+}
+
+
+.popup_is-opened {
+  display: flex;
+  
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  justify-content: center;
+  align-items: center;
+  /* Estilos adicionales para cuando el popup esté abierto */
+}

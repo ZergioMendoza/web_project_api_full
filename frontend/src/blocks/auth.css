@@ -1,0 +1,134 @@
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: linear-gradient(to right, #132436 0%, #A50044 100%);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.auth {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(240, 18, 18, 0.1);
+}
+
+.form-image {
+  max-width: 100%; /* Ajusta el tamaño máximo de la imagen */
+  height: auto;    /* Mantiene la relación de aspecto */
+}
+
+h2 {
+  color: #360ec5;
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #030202;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+}
+
+input:focus {
+  border-color: #4b40ae; /* Cambia el color al enfocar */
+}
+
+button {
+  padding: 12px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #280a9e; /* Cambia el color al pasar el mouse */
+}
+
+/* auth.css o en un nuevo archivo CSS para el ErrorPopup */
+.error-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.error-popup_open {
+  display: flex;
+}
+
+.error-popup__content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.error-popup__image {
+  max-width: 100%;
+  height: auto;
+}
+
+.error-popup__close {
+  margin-top: 10px;
+  padding: 10px;
+  background: #be0303;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.auth p {
+  margin-top: 10px; /* Espacio entre el botón y el texto */
+  font-size: 14px; /* Tamaño de fuente más pequeño */
+  text-align: center; /* Centrar el texto */
+  color: aqua;
+}
+
+.auth p a {
+  color: #ffffff; /* Color del enlace */
+  text-decoration: none; /* Sin subrayado */
+}
+
+.auth p a:hover {
+  text-decoration: underline; /* Subrayado al pasar el mouse */
+}
+
+/* Estilo general del párrafo que contiene la leyenda */
+.register p {
+  margin-top: 10px; /* Espacio entre el formulario y la leyenda */
+  font-size: 14px;  /* Tamaño de fuente */
+  text-align: center; /* Centrar el texto */
+  color: #02d9ff; /* Color del texto principal */
+}
+
+/* Estilo para el enlace (Link) */
+.register p a {
+  color: #ffffff; /* Color del enlace */
+  text-decoration: none; /* Sin subrayado */
+  
+}
+
+/* Cambios de estilo al pasar el mouse sobre el enlace */
+.register p a:hover {
+  color: #ffffff; /* Cambia el color al pasar el mouse */
+  text-decoration: underline; /* Subrayado al pasar el mouse */
+}

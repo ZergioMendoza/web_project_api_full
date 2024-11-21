@@ -1,0 +1,59 @@
+/* auth.css o login.css */
+
+/* Estilo general del formulario de inicio de sesión sin cuadro */
+.auth.login {
+    background-color: transparent; /* Elimina el color de fondo */
+    padding: 0; /* Elimina el padding interno */
+    border-radius: 0; /* Elimina los bordes redondeados */
+    box-shadow: none; /* Elimina la sombra */
+    max-width: none; /* Elimina la restricción del ancho */
+    margin: 0 auto; /* Centrado del formulario */
+  }
+  
+  .auth.login h2 {
+    text-align: center;
+    color: #ffffff; /* Color del título */
+    margin-bottom: 20px;
+  }
+  
+  .auth.login form {
+    display: flex;
+    flex-direction: column; /* Coloca los elementos en columna */
+  }
+  
+  .auth.login input {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .auth.login button {
+    padding: 12px;
+    background-color: #0033ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+  }
+  
+  .auth p {
+    margin-top: 10px; /* Espacio entre el botón y el texto */
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+    text-align: center; /* Centrar el texto */
+    color: aqua;
+  }
+  
+  .auth p a {
+    color: #ffffff; /* Color del enlace */
+    text-decoration: none; /* Sin subrayado */
+  }
+  
+  .auth p a:hover {
+    text-decoration: underline; /* Subrayado al pasar el mouse */
+  }
+  

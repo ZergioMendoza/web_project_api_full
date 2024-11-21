@@ -1,0 +1,24 @@
+# Ignorar node_modules
+node_modules/
+
+# Ignorar carpetas de compilación
+dist/
+build/
+
+# Ignorar archivos específicos
+*.min.js
+*.bundle.js
+
+# Ignorar directorios específicos
+coverage/
+.cache/
+.next/
+
+# Ignorar configuraciones de editor
+.vscode/
+.idea/
+
+# Ignorar logs
+*.log
+
+# Personalizaciones adicionales

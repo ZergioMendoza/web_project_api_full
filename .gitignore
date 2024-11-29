@@ -1,1 +1,21 @@
-node_modules
+# Ignorar node_modules
+node_modules/
+
+# Ignorar archivos de entorno (importante no subir .env a repositorios)
+.env
+
+# Ignorar archivos de log
+logs/
+*.log
+
+# Ignorar dependencias de desarrollo
+package-lock.json
+yarn.lock
+
+# Ignorar configuraciones de IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Ignorar caché de ESLint
+.eslintcache

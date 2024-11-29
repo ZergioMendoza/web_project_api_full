@@ -1,24 +1,24 @@
-// app.js o server.js
+// backend/app.js
+
 import express from 'express';
-import { errors } from 'celebrate';  // Middleware de Celebrate para manejar errores de validación
-import errorHandler from './middlewares/errorHandler';  // El middleware que maneja los errores personalizados
+import morgan from 'morgan';
+import bodyParser from 'body-parser';
+import requestLogger from './middlewares/requestLogger'; // Middleware para registrar solicitudes
+import handleErrors from './middlewares/errorHandler'; // Middleware para manejar errores
 
 const app = express();
 
-// Configura el servidor para manejar JSON
-app.use(express.json());
+// Middleware para registrar todas las solicitudes
+app.use(requestLogger);
 
-// Rutas de tu API
-import cardRoutes from './routes/cards.js';  // Importa tus rutas (por ejemplo, rutas de tarjetas)
-app.use('/api', cardRoutes);  // Usa estas rutas en la base URL '/api'
+// Middleware para procesar cuerpos de solicitudes
+app.use(bodyParser.json());
 
-// Middleware para errores de Celebrate
-app.use(errors());  // Maneja los errores de validación generados por Celebrate
+// Otras rutas y middlewares de la aplicación
+app.use('/users', usersRouter);
+app.use('/cards', cardsRouter);
 
-// Middleware para manejar otros errores (por ejemplo, errores internos)
-app.use(errorHandler);  // Este middleware se encarga de otros tipos de errores
+// Middleware para manejar los errores
+app.use(handleErrors);
 
-// Arrancar el servidor
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
-});
+export default app;

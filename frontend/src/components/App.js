@@ -56,7 +56,7 @@ function App() {
   };
 
   useEffect(() => {
-    if (isAuthenticated) {      
+    if (isAuthenticated) {
       api.getCards(localStorage.getItem('token'))
         .then((fetchedCards) => setCards(fetchedCards))
         .catch((err) => console.error('Error fetching cards:', err));

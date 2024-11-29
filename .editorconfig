@@ -1,0 +1,33 @@
+# EditorConfig ayuda a mantener estilos de código consistentes
+# Más información: http://editorconfig.org
+
+# Reglas generales para todos los archivos
+[*]
+charset = utf-8                    # Codificación de caracteres UTF-8
+end_of_line = lf                   # Fin de línea en macOS/Linux (LF)
+insert_final_newline = true        # Insertar una línea en blanco al final del archivo
+trim_trailing_whitespace = true    # Eliminar espacios en blanco al final de las líneas
+indent_style = space               # Usar espacios para la indentación
+indent_size = 2                    # Tamaño de la indentación: 2 espacios
+
+# Reglas para archivos JavaScript (y derivados como JSON)
+[*.js]
+indent_style = space
+indent_size = 2
+
+[*.json]
+indent_style = space
+indent_size = 2
+
+# Reglas para archivos Markdown (README, documentación, etc.)
+[*.md]
+trim_trailing_whitespace = false   # Permitimos espacios al final para Markdown
+
+# Reglas para archivos YAML (si es que usas)
+[*.yml]
+indent_style = space
+indent_size = 2
+
+# Reglas para archivos de configuración como .env
+[*.env]
+trim_trailing_whitespace = false   # Permitimos espacios finales en variables de entorno

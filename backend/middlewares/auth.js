@@ -8,7 +8,7 @@ export const auth = (req, res, next) => {
   }
 
   try {
-    const payload = jwt.verify(token, 'secret_key');
+    const payload = jwt.verify(token, process.env.JWT_SECRET); // Usamos la variable de entorno
     req.user = payload; // Agrega el payload al objeto de solicitud
     next(); // Continúa con la solicitud
   } catch (error) {

@@ -4,7 +4,8 @@ import { celebrate, Joi, Segments } from 'celebrate';
 import { createCard } from '../controllers/cards.js';  // El controlador que maneja la creación de tarjetas
 
 import validateURL from '../utils/validateURL.js';  // Asegúrate de que la ruta sea correcta
-import { auth } from '../middlewares/auth';  // Importa el middleware de autenticación
+//import { auth } from '../middlewares/auth';  // Importa el middleware de autenticación
+import { auth } from '../middlewares/auth.js';
 
 const router = express.Router();
 

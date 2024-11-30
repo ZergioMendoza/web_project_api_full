@@ -24,6 +24,10 @@ app.use('/cards', cardsRouter);
 // Middleware para manejar los errores
 app.use(handleErrors);
 
+app.all('*', (req, res) => {
+  res.status(404).send({message: 'NOT FOUND'})
+})
+
 app.listen(3000, () => {
   console.log('listen')
 })

@@ -1,7 +1,6 @@
 // backend/app.js
 
 import express from 'express';
-import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import requestLogger from './middlewares/requestLogger'; // Middleware para registrar solicitudes
 import handleErrors from './middlewares/errorHandler'; // Middleware para manejar errores

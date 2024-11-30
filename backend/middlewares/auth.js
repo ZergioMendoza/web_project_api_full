@@ -18,3 +18,4 @@ export const auth = (req, res, next) => {
     res.status(403).json({ error: 'Token no válido o expirado.' });
   }
 };
+

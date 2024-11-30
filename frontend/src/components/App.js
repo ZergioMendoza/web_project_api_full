@@ -19,6 +19,7 @@ import successIcon from '../images/success.png';
 import errorIcon from '../images/error.png';
 
 function App() {
+  const [token, setToken] = useState(localStorage.getItem('token') || ''); // Almacenar el token en el estado
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
@@ -36,14 +37,15 @@ function App() {
   useEffect(() => {
     const storedToken = localStorage.getItem('token');
     if (storedToken) {
-      authenticateUser(storedToken);
+      setToken(storedToken); // Guardamos el token en el estado
+      authenticateUser(storedToken); // Autenticamos al usuario
     }
   }, []);
 
   // Función de autenticación
   const authenticateUser = async (token) => {
     try {
-      const userInfo = await getUserInfo(token);
+      const userInfo = await getUserInfo(token); // Verifica el token con la API
       if (userInfo) {
         setCurrentUser(userInfo.data);
         setIsAuthenticated(true);
@@ -56,12 +58,12 @@ function App() {
   };
 
   useEffect(() => {
-    if (isAuthenticated) {
-      api.getCards(localStorage.getItem('token'))
+    if (isAuthenticated && token) {
+      api.getCards(token)  // Usar el token desde el estado
         .then((fetchedCards) => setCards(fetchedCards))
         .catch((err) => console.error('Error fetching cards:', err));
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, token]); // Dependencia de token
 
   function handleCardClick(card) {
     setSelectedCard(card);
@@ -128,10 +130,11 @@ function App() {
     try {
       const data = await login(email, password);
       localStorage.setItem('token', data.token);
+      setToken(data.token);  // Actualizar el estado del token
       authenticateUser(data.token);
       navigate('/');
-    } catch (error) {
-      console.error('Login error:', error);
+    } catch (err) {
+      console.error(`Login error: ${err}`);
       setInfoMessage('Login failed. Please check your credentials.');
       setTooltipIcon(errorIcon);
       setInfoTooltipOpen(true);
@@ -144,8 +147,8 @@ function App() {
       setInfoMessage('Registration successful. You can now log in.');
       setTooltipIcon(successIcon);
       setInfoTooltipOpen(true);
-    } catch (error) {
-      console.error('Registration error:', error);
+    } catch (err) {
+      console.error(`Registration error: ${err}`);
       setInfoMessage('Registration failed. Please try again.');
       setTooltipIcon(errorIcon);
       setInfoTooltipOpen(true);
@@ -159,61 +162,64 @@ function App() {
   const handleLogout = () => {
     setIsAuthenticated(false);
     setCurrentUser({});
-    localStorage.removeItem('token');
+    setToken('');  // Limpiar el estado del token
+    localStorage.removeItem('token'); // Limpiar localStorage
     navigate('/signin');
   };
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <Header isAuthenticated={isAuthenticated} onLogout={handleLogout} />
-      <Routes>
-        <Route path="/signup" element={<Register onRegister={handleRegister} />} />
-        <Route path="/signin" element={<Login onLogin={handleLogin} />} />
-        <Route
-          path="/"
-          element={
-            <ProtectedRoute isAuthenticated={isAuthenticated}>
-              <div className="page">
-                <Main
-                  cards={cards}
-                  onEditProfileClick={() => setIsEditProfilePopupOpen(true)}
-                  onAddPlaceClick={() => setIsAddPlacePopupOpen(true)}
-                  onEditAvatarClick={() => setIsEditAvatarPopupOpen(true)}
-                  onCardClick={handleCardClick}
-                  onCardLike={handleCardLike}
-                  onCardDelete={handleCardDelete}
-                />
-                <Footer />
-                <EditProfilePopup
-                  isOpen={isEditProfilePopupOpen}
-                  onClose={closeAllPopups}
-                  onUpdateUser={handleUpdateUser}
-                  isLoading={isLoading}
-                />
-                <EditAvatarPopup
-                  isOpen={isEditAvatarPopupOpen}
-                  onClose={closeAllPopups}
-                  onUpdateAvatar={handleUpdateAvatar}
-                  isLoading={isLoading}
-                />
-                <AddPlacePopup
-                  isOpen={isAddPlacePopupOpen}
-                  onClose={closeAllPopups}
-                  onAddPlace={handleAddPlaceSubmit}
-                  isLoading={isLoading}
-                />
-                <ImagePopup card={selectedCard} onClose={closeAllPopups} />
-              </div>
-            </ProtectedRoute>
-          }
+      <Router>
+        <Header handleLogout={handleLogout} isAuthenticated={isAuthenticated} />
+        <Routes>
+          <Route path="/signup" element={<Register onRegister={handleRegister} />} />
+          <Route path="/signin" element={<Login onLogin={handleLogin} />} />
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <div className="page">
+                  <Main
+                    cards={cards}
+                    onEditProfileClick={() => setIsEditProfilePopupOpen(true)}
+                    onAddPlaceClick={() => setIsAddPlacePopupOpen(true)}
+                    onEditAvatarClick={() => setIsEditAvatarPopupOpen(true)}
+                    onCardClick={handleCardClick}
+                    onCardLike={handleCardLike}
+                    onCardDelete={handleCardDelete}
+                  />
+                  <Footer />
+                  <EditProfilePopup
+                    isOpen={isEditProfilePopupOpen}
+                    onClose={closeAllPopups}
+                    onUpdateUser={handleUpdateUser}
+                    isLoading={isLoading}
+                  />
+                  <EditAvatarPopup
+                    isOpen={isEditAvatarPopupOpen}
+                    onClose={closeAllPopups}
+                    onUpdateAvatar={handleUpdateAvatar}
+                    isLoading={isLoading}
+                  />
+                  <AddPlacePopup
+                    isOpen={isAddPlacePopupOpen}
+                    onClose={closeAllPopups}
+                    onAddPlace={handleAddPlaceSubmit}
+                    isLoading={isLoading}
+                  />
+                  <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+                </div>
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+        <InfoTooltip
+          isOpen={infoTooltipOpen}
+          message={infoMessage}
+          icon={tooltipIcon}
+          onClose={closeInfoTooltip}
         />
-      </Routes>
-      <InfoTooltip
-        isOpen={infoTooltipOpen}
-        message={infoMessage}
-        icon={tooltipIcon}
-        onClose={closeInfoTooltip}
-      />
+      </Router>
     </CurrentUserContext.Provider>
   );
 }

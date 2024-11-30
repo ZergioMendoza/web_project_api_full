@@ -1,3 +1,5 @@
+
+
 class Api {
   constructor({ baseUrl }) {
     this.baseUrl = baseUrl;
@@ -95,7 +97,8 @@ class Api {
 
 // Obtener la URL base desde las variables de entorno
 const api = new Api({
-  baseUrl: process.env.REACT_APP_API_URL || 'http://localhost:5000/v1', // URL para desarrollo
+  // Aquí, asegúrate de que la URL esté configurada correctamente para el entorno de producción
+  baseUrl: process.env.REACT_APP_API_URL || 'https://api.instabook.mooo.com', // URL para producción
 });
 
 export default api;

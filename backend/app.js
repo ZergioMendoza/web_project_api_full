@@ -6,10 +6,20 @@ import requestLogger from './middlewares/requestLogger.js'; // Middleware para r
 import handleErrors from './middlewares/errorHandler.js'; // Middleware para manejar errores
 import usersRouter from './routes/users.js'; // Rutas de usuarios
 import cardsRouter from './routes/cards.js'; // Rutas de tarjetas
+import cors from 'cors';  // Importa CORS
 
 dotenv.config();
 
+
+
 const app = express();
+
+app.use(cors({
+  origin: 'http://tu-dominio-front-end.com',  // Sustituye esto con el dominio de tu frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Métodos permitidos
+  allowedHeaders: ['Content-Type', 'Authorization'],  // Cabeceras permitidas
+}));
+
 
 // Middleware para registrar todas las solicitudes
 app.use(requestLogger);

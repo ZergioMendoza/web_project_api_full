@@ -3,9 +3,12 @@ import path from 'path';
 import logger from './utils/logger.js'; // Asegúrate de que la ruta sea correcta
 import routes from './routes/index.js';
 import cors from 'cors';  // Importamos cors para habilitar la comunicación entre diferentes dominios
+import dotenv from 'dotenv';  // Asegúrate de que dotenv esté importado
+
+dotenv.config();  // Cargar las variables de entorno
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 5000;  // Cambié el puerto a 5000 para que coincida con el .env
 
 // Solución para obtener el directorio actual en ES Modules
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
@@ -17,9 +20,9 @@ app.use(cors());
 app.use(express.json());
 
 // Configuración de las rutas de la API
-app.use('/api', routes);
+app.use('/api', routes);  // Asegúrate de que en tus rutas esté el prefijo /api o ajusta según sea necesario
 
-// Servir archivos estáticos desde la carpeta de construcción del frontend
+// Servir archivos estáticos desde la carpeta de construcción del frontend (si ya está construida)
 app.use(express.static(path.join(__dirname, '../frontend/build')));
 
 // Ruta para manejar el acceso directo a la raíz (opcional)

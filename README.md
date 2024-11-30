@@ -1,21 +1,44 @@
-# Tripleten web_project_api_full
+Proyecto Web API Full
+Este es un proyecto full-stack que incluye una API de backend desarrollada con Node.js y Express, y un frontend desarrollado con React. La API se conecta a una base de datos MongoDB para manejar los datos.
 
-# Proyecto Web API
+Estructura del Proyecto
+El proyecto está dividido en dos directorios principales:
 
-Este es un proyecto full-stack que incluye una API de backend desarrollada con Node.js y Express, y un frontend desarrollado con React.
+frontend/: Contiene la aplicación React para el frontend.
+backend/: Contiene la API de Node.js y Express para el backend.
+Además, hemos configurado y utilizado los siguientes dominios:
 
-## Estructura del proyecto
+api.instabook.mooo.com: El dominio para la API del backend.
+instabook.mooo.com: El dominio para el frontend.
+Requisitos Previos
+Antes de empezar, asegúrate de tener los siguientes componentes instalados:
 
-El proyecto está dividido en dos directorios:
+Node.js (preferiblemente la versión LTS).
+npm (gestor de paquetes de Node.js).
+MongoDB (puedes usar MongoDB localmente o MongoDB Atlas).
+Git (para clonar el repositorio).
+Docker (opcional, si prefieres usar Docker para MongoDB).
+Certbot (para la configuración de SSL, si es necesario).
 
-- `frontend/`: Contiene la aplicación frontend escrita en React.
-- `backend/`: Contiene la API del backend escrita en Node.js y Express.
+Paso 1: Obtener los Dominios
+Este proyecto utiliza los siguientes dominios:
 
-## Instalación
+Dominio Backend: api.instabook.mooo.com (para la API).
+Dominio Frontend: instabook.mooo.com (para el frontend).
+Paso 2: Configuración de DNS
+Configura los registros DNS de tus dominios para que apunten a la dirección IP de tu servidor. Los registros DNS deben estar configurados de la siguiente manera:
 
-Para comenzar con el proyecto, sigue estos pasos:
+api.instabook.mooo.com: Apunta al servidor donde se está ejecutando el backend (por ejemplo, una IP pública como 35.247.206.111).
 
-### 1. Clona el repositorio
+Ejemplo de configuración en tu proveedor de dominios (GoDaddy, Namecheap, etc.):
 
-```bash
+Tipo de Registro: A
+Nombre del Registro: api
+Dirección IP: 35.247.206.111
+instabook.mooo.com: Apunta al servidor donde se está ejecutando el frontend.
 
+Ejemplo de configuración:
+
+Tipo de Registro: A
+Nombre del Registro: @ (o sin subdominio)
+Dirección IP: 35.247.206.111

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Importar Link
+import { Link, useNavigate } from 'react-router-dom'; // Usamos useNavigate para redirigir
 import '../blocks/login.css';  // Estilos específicos de login
 import '../blocks/auth.css';   // Estilos comunes
 import ErrorPopup from './ErrorPopup'; // Importa el nuevo ErrorPopup
@@ -8,12 +8,20 @@ const Login = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isErrorPopupOpen, setIsErrorPopupOpen] = useState(false);
+  const navigate = useNavigate(); // Usamos navigate para redirigir al usuario
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onLogin(email, password).catch(() => {
+
+    try {
+      // Llamamos a la función onLogin, la cual hace la solicitud al backend
+      await onLogin(email, password);
+      navigate('/'); // Redirigimos a la página principal después de iniciar sesión
+    } catch (error) {
+      setErrorMessage('Error en las credenciales. Intenta nuevamente.'); // Muestra mensaje de error
       setIsErrorPopupOpen(true); // Mostrar el popup de error
-    });
+    }
   };
 
   const closeErrorPopup = () => {
@@ -47,10 +55,9 @@ const Login = ({ onLogin }) => {
       </p>
 
       {/* Popup de error */}
-      <ErrorPopup isOpen={isErrorPopupOpen} onClose={closeErrorPopup} />
+      <ErrorPopup isOpen={isErrorPopupOpen} onClose={closeErrorPopup} message={errorMessage} />
     </div>
   );
 };
 
 export default Login;
-

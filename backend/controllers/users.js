@@ -1,4 +1,4 @@
-import User from '../models/User.js';
+import User from '../models/user.js';
 
 export const getCurrentUser = (req, res, next) => {
   const userId = req.user._id;  // Supongo que `req.user` es el usuario autenticado

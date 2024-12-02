@@ -2,24 +2,22 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
+import cors from 'cors';  // Importa CORS
 import requestLogger from './middlewares/requestLogger.js'; // Middleware para registrar solicitudes
 import handleErrors from './middlewares/errorHandler.js'; // Middleware para manejar errores
-import usersRouter from './routes/users.js'; // Rutas de usuarios
-import cardsRouter from './routes/cards.js'; // Rutas de tarjetas
-import cors from 'cors';  // Importa CORS
+import routes from './routes/index.js'; // Centralizar rutas en un archivo
 
 dotenv.config();
 
-
-
 const app = express();
 
+// Configuración de CORS
 app.use(cors({
-  origin: 'http://tu-dominio-front-end.com',  // Sustituye esto con el dominio de tu frontend
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Métodos permitidos
+  origin: ['http://tu-dominio-front-end.com', 'http://localhost:3000'],  // Agregar dominios permitidos
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],  // Métodos permitidos
   allowedHeaders: ['Content-Type', 'Authorization'],  // Cabeceras permitidas
+  credentials: true,  // Permitir el envío de cookies y credenciales
 }));
-
 
 // Middleware para registrar todas las solicitudes
 app.use(requestLogger);
@@ -28,18 +26,20 @@ app.use(requestLogger);
 app.use(bodyParser.json());
 
 // Rutas de la aplicación
-app.use('/users', usersRouter);
-app.use('/cards', cardsRouter);
+app.use('/api', routes);
 
 // Middleware para manejar los errores
 app.use(handleErrors);
 
+// Respuesta para rutas no existentes
 app.all('*', (req, res) => {
-  res.status(404).send({message: 'NOT FOUND'})
-})
+  res.status(404).send({ message: 'Recurso no encontrado' });
+});
 
-app.listen(3000, () => {
-  console.log('listen')
-})
+// Iniciar el servidor
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor escuchando en http://localhost:${PORT} en modo ${process.env.NODE_ENV || 'desarrollo'}`);
+});
 
 export default app;

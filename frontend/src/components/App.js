@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom'; // Asegúrate de importar solo Routes y Route, no BrowserRouter
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
@@ -128,10 +128,10 @@ function App() {
 
   const handleLogin = async (email, password) => {
     try {
-      const data = await login(email, password);
-      localStorage.setItem('token', data.token);
-      setToken(data.token);  // Actualizar el estado del token
-      authenticateUser(data.token);
+      const data = await login(email, password); // Aquí se obtiene el token
+      localStorage.setItem('token', data.token);  // Guardamos el token en localStorage
+      setToken(data.token); // Actualizamos el estado con el token
+      authenticateUser(data.token);  // Validamos al usuario
       navigate('/');
     } catch (err) {
       console.error(`Login error: ${err}`);
@@ -169,57 +169,55 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <Router>
-        <Header handleLogout={handleLogout} isAuthenticated={isAuthenticated} />
-        <Routes>
-          <Route path="/signup" element={<Register onRegister={handleRegister} />} />
-          <Route path="/signin" element={<Login onLogin={handleLogin} />} />
-          <Route
-            path="/"
-            element={
-              <ProtectedRoute isAuthenticated={isAuthenticated}>
-                <div className="page">
-                  <Main
-                    cards={cards}
-                    onEditProfileClick={() => setIsEditProfilePopupOpen(true)}
-                    onAddPlaceClick={() => setIsAddPlacePopupOpen(true)}
-                    onEditAvatarClick={() => setIsEditAvatarPopupOpen(true)}
-                    onCardClick={handleCardClick}
-                    onCardLike={handleCardLike}
-                    onCardDelete={handleCardDelete}
-                  />
-                  <Footer />
-                  <EditProfilePopup
-                    isOpen={isEditProfilePopupOpen}
-                    onClose={closeAllPopups}
-                    onUpdateUser={handleUpdateUser}
-                    isLoading={isLoading}
-                  />
-                  <EditAvatarPopup
-                    isOpen={isEditAvatarPopupOpen}
-                    onClose={closeAllPopups}
-                    onUpdateAvatar={handleUpdateAvatar}
-                    isLoading={isLoading}
-                  />
-                  <AddPlacePopup
-                    isOpen={isAddPlacePopupOpen}
-                    onClose={closeAllPopups}
-                    onAddPlace={handleAddPlaceSubmit}
-                    isLoading={isLoading}
-                  />
-                  <ImagePopup card={selectedCard} onClose={closeAllPopups} />
-                </div>
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
-        <InfoTooltip
-          isOpen={infoTooltipOpen}
-          message={infoMessage}
-          icon={tooltipIcon}
-          onClose={closeInfoTooltip}
+      <Header handleLogout={handleLogout} isAuthenticated={isAuthenticated} />
+      <Routes>
+        <Route path="/signup" element={<Register onRegister={handleRegister} />} />
+        <Route path="/signin" element={<Login onLogin={handleLogin} />} />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <div className="page">
+                <Main
+                  cards={cards}
+                  onEditProfileClick={() => setIsEditProfilePopupOpen(true)}
+                  onAddPlaceClick={() => setIsAddPlacePopupOpen(true)}
+                  onEditAvatarClick={() => setIsEditAvatarPopupOpen(true)}
+                  onCardClick={handleCardClick}
+                  onCardLike={handleCardLike}
+                  onCardDelete={handleCardDelete}
+                />
+                <Footer />
+                <EditProfilePopup
+                  isOpen={isEditProfilePopupOpen}
+                  onClose={closeAllPopups}
+                  onUpdateUser={handleUpdateUser}
+                  isLoading={isLoading}
+                />
+                <EditAvatarPopup
+                  isOpen={isEditAvatarPopupOpen}
+                  onClose={closeAllPopups}
+                  onUpdateAvatar={handleUpdateAvatar}
+                  isLoading={isLoading}
+                />
+                <AddPlacePopup
+                  isOpen={isAddPlacePopupOpen}
+                  onClose={closeAllPopups}
+                  onAddPlace={handleAddPlaceSubmit}
+                  isLoading={isLoading}
+                />
+                <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+              </div>
+            </ProtectedRoute>
+          }
         />
-      </Router>
+      </Routes>
+      <InfoTooltip
+        isOpen={infoTooltipOpen}
+        message={infoMessage}
+        icon={tooltipIcon}
+        onClose={closeInfoTooltip}
+      />
     </CurrentUserContext.Provider>
   );
 }

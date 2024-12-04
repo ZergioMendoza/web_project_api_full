@@ -9,23 +9,24 @@ class Api {
     if (!token) {
       return Promise.reject('No token found. Please log in.');
     }
-    console.log('Token:', token);  // Verifica que el token se esté obteniendo correctamente
+    console.log('Token:', token); // Verifica que el token se esté obteniendo correctamente
     return {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     };
   }
+
   // Método para verificar la respuesta de la solicitud
   _checkResponse(res) {
     if (!res.ok) {
       // Manejo de errores según el código de estado
       if (res.status === 401) {
         // Si el token es inválido o ha expirado
-        localStorage.removeItem('token');  // Eliminar token si es inválido
+        localStorage.removeItem('token'); // Eliminar token si es inválido
         alert('Your session has expired, please log in again.');
         setTimeout(() => {
-          window.location.href = '/signin';  // Redirigir a la página de login
-        }, 2000);  // Redirige después de 2 segundos para mostrar el mensaje al usuario
+          window.location.href = '/signin'; // Redirigir a la página de login
+        }, 2000); // Redirige después de 2 segundos para mostrar el mensaje al usuario
       } else if (res.status === 403) {
         // Token prohibido, no tiene permisos
         res.json().then((errorData) => {
@@ -33,7 +34,7 @@ class Api {
         });
       } else {
         return res.json().then((errorData) => {
-          alert(`Error: ${errorData.message || res.statusText}`);  // Mostrar mensaje de error al usuario
+          alert(`Error: ${errorData.message || res.statusText}`); // Mostrar mensaje de error al usuario
           return Promise.reject(`Error: ${res.status}`);
         });
       }
@@ -47,7 +48,7 @@ class Api {
       .then(this._checkResponse)
       .catch((error) => {
         console.error('Error:', error);
-        throw error;  // O maneja de acuerdo a la lógica de tu aplicación
+        throw error; // O maneja de acuerdo a la lógica de tu aplicación
       });
   }
 
@@ -111,10 +112,15 @@ class Api {
   }
 }
 
-// Obtener la URL base desde las variables de entorno
+// Usa la URL del servidor correcto
+// const api = new Api({
+//   baseUrl: 'https://instabook.mooo.com', // Dominio público del servidor
+// });
+
+// export default api;
+
 const api = new Api({
-  // Asegúrate de que la URL esté configurada correctamente para el entorno de producción
-  baseUrl: process.env.REACT_APP_API_URL || 'https://api.instabook.mooo.com', // URL para producción
+  baseUrl: process.env.REACT_APP_API_URL || 'http://localhost:3001', // Cambia a tu URL base para producción si es necesario
 });
 
 export default api;

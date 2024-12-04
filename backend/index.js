@@ -1,32 +1,40 @@
+// index.js (Raíz del Backend)
+
 import express from 'express';
 import path from 'path';
-import logger from './utils/logger.js'; // Asegúrate de que la ruta sea correcta
-import routes from './routes/index.js';
-import cors from 'cors';  // Importamos cors para habilitar la comunicación entre diferentes dominios
-import dotenv from 'dotenv';  // Asegúrate de que dotenv esté importado
+import logger from './utils/logger.js'; // Asegúrate de que el archivo existe
+import routes from './routes/index.js'; // Rutas generales, incluyendo login y autenticación
+import cardsRoutes from './routes/cards.js'; // Rutas de tarjetas
+import usersRoutes from './routes/users.js'; // Rutas de usuarios
+import cors from 'cors'; // Importamos cors para habilitar la comunicación entre diferentes dominios
+import dotenv from 'dotenv'; // Asegúrate de que dotenv esté importado
 
-dotenv.config();  // Cargar las variables de entorno
+dotenv.config(); // Cargar las variables de entorno
 
 const app = express();
-const port = process.env.PORT || 5000;  // Cambié el puerto a 5000 para que coincida con el .env
+
+// Cambié el puerto a 3001 para que no haya conflicto con el puerto 5000
+const port = process.env.PORT || 3001; // Cambié el puerto a 3001, si no está definido en .env
 
 // Solución para obtener el directorio actual en ES Modules
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
 // Habilitar CORS para el frontend (en este caso solo permitimos localhost:3000)
 const corsOptions = {
-  origin: 'http://localhost:3000',  // URL de tu frontend
-  methods: 'GET, POST, PATCH, DELETE',  // Métodos permitidos
-  allowedHeaders: 'Content-Type, Authorization',  // Cabeceras permitidas
+  origin: 'http://localhost:3000', // URL de tu frontend
+  methods: 'GET, POST, PATCH, DELETE', // Métodos permitidos
+  allowedHeaders: 'Content-Type, Authorization', // Cabeceras permitidas
 };
 
-app.use(cors(corsOptions));  // Configuración de CORS con las opciones
+app.use(cors(corsOptions)); // Configuración de CORS con las opciones
 
 // Middleware para procesar datos en formato JSON
 app.use(express.json());
 
 // Configuración de las rutas de la API
-app.use('/api', routes);  // Asegúrate de que en tus rutas esté el prefijo /api o ajusta según sea necesario
+app.use('/api', routes); // Rutas generales (login, etc.)
+app.use('/api/cards', cardsRoutes); // Rutas de tarjetas
+app.use('/api/users', usersRoutes); // Rutas de usuarios
 
 // Ruta para manejar el acceso directo a la raíz (opcional)
 app.get('/', (req, res) => {
@@ -37,9 +45,6 @@ app.get('/', (req, res) => {
 app.use((req, res, next) => {
   res.status(404).json({ message: 'Route not found' });
 });
-
-// Servir archivos estáticos desde la carpeta de construcción del frontend (si ya está construida)
-app.use(express.static(path.join(__dirname, '../frontend/build')));
 
 // Captura errores y muestra un mensaje en caso de fallo
 try {

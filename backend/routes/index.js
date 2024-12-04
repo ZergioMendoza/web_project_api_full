@@ -1,9 +1,10 @@
 // routes/index.js
+
 import express from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import User from '../models/User.js';  // Asegúrate de que este modelo exista y esté bien configurado
-import { authenticateToken } from '../middleware/auth.js';  // Importar el middleware de autenticación
+import User from '../models/user.js'; // Asegúrate de que este modelo exista y esté bien configurado
+import { authenticateToken } from '../middlewares/auth.js'; // Importar la función correctamente
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -50,7 +51,7 @@ router.post('/login', async (req, res) => {
 // Ruta protegida: Obtener la información del usuario
 router.get('/me', authenticateToken, async (req, res) => {
   try {
-    const user = await User.findById(req.user.id);  // Accedemos al ID del usuario desde el token
+    const user = await User.findById(req.user.id); // Accedemos al ID del usuario desde el token
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
@@ -59,9 +60,6 @@ router.get('/me', authenticateToken, async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
-
-// Otras rutas protegidas pueden ir aquí, por ejemplo:
-// router.get('/profile', authenticateToken, someController);
 
 // Exportamos las rutas para ser usadas en el archivo principal del servidor
 export default router;

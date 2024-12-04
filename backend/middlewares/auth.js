@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+// Exportamos correctamente authenticateToken
 export const authenticateToken = (req, res, next) => {
   const token = req.header('Authorization')?.split(' ')[1];  // Obtener el token del header
 

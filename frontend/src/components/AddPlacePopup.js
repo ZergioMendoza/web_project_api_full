@@ -12,22 +12,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoading }) {
 
     try {
       const cardData = { name, link };
-
-      // Enviar los datos al backend
-      const response = await fetch('http://localhost:3001/api/cards', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(cardData),
-      });
-
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error || 'Error creando la tarjeta');
-
-      onAddPlace(data); // Añadir la tarjeta
-      onClose(); // Cerrar el popup
+      onAddPlace(cardData); // Añadir la tarjeta      
     } catch (error) {
       console.error('Error creando la tarjeta:', error);
     }

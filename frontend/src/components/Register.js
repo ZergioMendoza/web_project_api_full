@@ -7,6 +7,7 @@ const Register = ({ onRegister }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log('registrando');
     onRegister(email, password); // Llamada a la función onRegister
   };
 

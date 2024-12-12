@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import validator from 'validator';
+import bcrypt from "bcryptjs";
 
 const { Schema } = mongoose;
 
@@ -39,5 +40,19 @@ const userSchema = new Schema({
     select: false, // Este campo no será devuelto por defecto
   },
 });
+
+userSchema.statics.findUserByCredentials = async function (email, password) {
+  const user = await this.findOne({ email }).select("+password");
+  if (!user) {
+    return Promise.reject(new Error("Incorrect credentials"));
+  }
+
+  const isPasswordCorrect = await bcrypt.compare(password, user.password);
+  if (!isPasswordCorrect) {
+    return Promise.reject(new Error("Incorrect credentials"));
+  }
+
+  return user;
+};
 
 export default mongoose.model('User', userSchema);

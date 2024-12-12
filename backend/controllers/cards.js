@@ -1,46 +1,41 @@
-// controllers/cards.js
+import Card from "../models/card.js";
 
-// Aquí guardamos las tarjetas en memoria (esto es solo para ejemplo)
-let cards = [];
+// Obtener todas las tarjetas
+export const getAllCards = async (req, res) => {
+  try {
+    const cards = await Card.find().populate('owner likes');
+    return res.send(cards); // Retornar las tarjetas obtenidas
+  } catch (err) {
+    return res.status(500).send({ message: 'Error al obtener tarjetas', error: err }); // Retornar error si hay un problema
+  }
+};
 
-// Función para crear una tarjeta
-export const createCard = (req, res) => {
+// Crear una nueva tarjeta
+export const createCard = async (req, res) => {
   const { name, link } = req.body;
 
-  // Validamos que los datos existan
-  if (!name || !link) {
-    return res.status(400).json({ message: 'Name and link are required' });
+  console.log('owner', req.user);
+
+  try {
+    const card = new Card({ name, link, owner: req.user._id });
+    await card.save();
+    return res.status(201).send(card); // Retornar la tarjeta creada
+  } catch (err) {
+    return res.status(400).send({ message: 'Error al crear la tarjeta', error: err }); // Retornar error si hay un problema
   }
-
-  // Añadimos la tarjeta al arreglo (esto reemplaza la base de datos por ahora)
-  const newCard = { name, link };
-  cards.push(newCard);
-
-  // Respondemos con el objeto creado
-  res.status(201).json({
-    message: 'Card created successfully',
-    card: newCard
-  });
 };
 
-// Función para obtener todas las tarjetas
-export const getCards = (req, res) => {
-  res.status(200).json(cards);  // Devolvemos las tarjetas en memoria
-};
+// Eliminar una tarjeta por ID
+export const deleteCard = async (req, res) => {
+  const { cardId } = req.params;
 
-// Función para eliminar una tarjeta
-export const deleteCard = (req, res) => {
-  const { id } = req.params;  // Obtenemos el id de la tarjeta a eliminar
-
-  // Buscamos la tarjeta por el id
-  const cardIndex = cards.findIndex(card => card.id === id);
-
-  if (cardIndex === -1) {
-    return res.status(404).json({ message: 'Card not found' });
+  try {
+    const deletedCard = await Card.findByIdAndDelete(cardId);
+    if (!deletedCard) {
+      return res.status(404).send({ message: 'Tarjeta no encontrada' }); // Retornar mensaje si no se encuentra la tarjeta
+    }
+    return res.send({ message: 'Tarjeta eliminada exitosamente' }); // Retornar mensaje de éxito
+  } catch (err) {
+    return res.status(500).send({ message: 'Error al eliminar tarjeta', error: err }); // Retornar error si hay un problema
   }
-
-  // Eliminamos la tarjeta
-  cards.splice(cardIndex, 1);
-
-  res.status(200).json({ message: 'Card deleted successfully' });
 };

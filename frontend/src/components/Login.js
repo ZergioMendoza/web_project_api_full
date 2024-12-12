@@ -17,7 +17,7 @@ const Login = ({ onLogin }) => {
     try {
       // Llamamos a la función onLogin, la cual hace la solicitud al backend
       await onLogin(email, password);
-      navigate('/'); // Redirigimos a la página principal después de iniciar sesión
+      //navigate('/'); // Redirigimos a la página principal después de iniciar sesión
     } catch (error) {
       setErrorMessage('Error en las credenciales. Intenta nuevamente.'); // Muestra mensaje de error
       setIsErrorPopupOpen(true); // Mostrar el popup de error

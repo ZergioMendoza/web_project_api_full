@@ -13,7 +13,7 @@ export const login = async (req, res) => {
 
   try {
     // 1. Buscar el usuario por email
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).select("+password");
 
     // Si no se encuentra el usuario, devolvemos un error
     if (!user) {
@@ -30,7 +30,7 @@ export const login = async (req, res) => {
 
     // 3. Crear un token JWT con el ID del usuario
     const token = jwt.sign(
-      { id: user._id },  // Incluimos solo el ID del usuario en el token
+      { _id: user._id },  // Incluimos solo el ID del usuario en el token
       process.env.JWT_SECRET,  // Usamos el JWT_SECRET de las variables de entorno
       { expiresIn: '1h' }  // El token expirará en 1 hora
     );
@@ -44,3 +44,20 @@ export const login = async (req, res) => {
     res.status(500).json({ message: 'Server error, please try again later' });
   }
 };
+
+export const register = async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = await User.create({
+      email,
+      password: hashedPassword,
+    });
+
+    res.send({_id: newUser._id, email:  newUser.email});
+  } catch (error) {
+    console.log('Register error: ', error);
+    res.status(500).json({ message: 'Server error, please try again later' });
+  }
+}

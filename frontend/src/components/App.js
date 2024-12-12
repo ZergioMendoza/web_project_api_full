@@ -47,12 +47,14 @@ function App() {
     try {
       const userInfo = await getUserInfo(token); // Verifica el token con la API
       if (userInfo) {
-        setCurrentUser(userInfo.data);
+        setCurrentUser(userInfo);
         setIsAuthenticated(true);
+        navigate('/');
       }
     } catch (err) {
       console.error(`Error verifying token: ${err}`);
       localStorage.removeItem('token');
+      navigate('/signin');
       setIsAuthenticated(false);
     }
   };
@@ -132,7 +134,7 @@ function App() {
       localStorage.setItem('token', data.token);  // Guardamos el token en localStorage
       setToken(data.token); // Actualizamos el estado con el token
       authenticateUser(data.token);  // Validamos al usuario
-      navigate('/');
+      //navigate('/');
     } catch (err) {
       console.error(`Login error: ${err}`);
       setInfoMessage('Login failed. Please check your credentials.');
@@ -144,6 +146,7 @@ function App() {
   const handleRegister = async (email, password) => {
     try {
       await register(email, password);
+      console.log('regisgtro correcto')
       setInfoMessage('Registration successful. You can now log in.');
       setTooltipIcon(successIcon);
       setInfoTooltipOpen(true);
@@ -169,7 +172,7 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <Header handleLogout={handleLogout} isAuthenticated={isAuthenticated} />
+      <Header onLogout={handleLogout} isAuthenticated={isAuthenticated} />
       <Routes>
         <Route path="/signup" element={<Register onRegister={handleRegister} />} />
         <Route path="/signin" element={<Login onLogin={handleLogin} />} />

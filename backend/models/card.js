@@ -17,10 +17,23 @@ const cardSchema = new mongoose.Schema({
       },
       message: props => `${props.value} no es una URL válida!`
     }
-  }
+  },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'User',
+  },
+  likes: {
+    type: [mongoose.Schema.Types.ObjectId],
+    default: [],
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 // Crear el modelo de la tarjeta
-const Card = mongoose.model('Card', cardSchema);
 
-export default Card;
+export default mongoose.model('Card', cardSchema);
+

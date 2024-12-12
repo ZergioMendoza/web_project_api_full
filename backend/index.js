@@ -5,6 +5,16 @@ import dotenv from 'dotenv';
 import routes from './routes/index.js';
 import cardsRoutes from './routes/cards.js';
 import usersRoutes from './routes/users.js';
+import mongoose from 'mongoose';
+
+mongoose
+  .connect("mongodb://localhost:27017/aroundb_sergio")
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 dotenv.config();
 

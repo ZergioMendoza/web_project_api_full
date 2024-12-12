@@ -30,7 +30,7 @@ function PopupWithForm({
 
   return (
     <div
-      className={`popup popup_type_${name} ${isOpen ? 'popup__opened' : ''}`}
+      className={`popup popup_type_${name} ${isOpen ? 'popup_opened' : ''}`}
       onClick={handleOverlayClick}
       role="dialog"
       aria-labelledby={`${name}-title`}

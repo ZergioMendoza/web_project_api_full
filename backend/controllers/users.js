@@ -3,7 +3,7 @@
 import User from '../models/user.js';  // Asegúrate de que este modelo esté correctamente importado
 
 export const getCurrentUser = (req, res, next) => {
-  const userId = req.user.id;  // Accedemos al ID del usuario desde el token
+  const userId = req.user._id;  // Accedemos al ID del usuario desde el token
 
   User.findById(userId)
     .then(user => {

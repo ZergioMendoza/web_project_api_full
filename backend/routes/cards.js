@@ -1,7 +1,7 @@
 // routes/cards.js
 
 import express from 'express';
-import { getCards, createCard, deleteCard } from '../controllers/cards.js';  // Eliminamos la referencia a 'updateCardLikes'
+import { getAllCards, createCard, deleteCard } from '../controllers/cards.js';  // Eliminamos la referencia a 'updateCardLikes'
 import { authenticateToken } from '../middlewares/auth.js';  // Autenticación
 import { celebrate, Joi, Segments } from 'celebrate';
 import validateURL from '../utils/validateURL.js';  // Función para validar la URL
@@ -21,10 +21,10 @@ router.post('/',
 );
 
 // Ruta para obtener todas las tarjetas
-router.get('/', getCards);
+router.get('/', getAllCards);
 
 // Ruta para eliminar una tarjeta
-router.delete('/:id', authenticateToken, deleteCard);
+router.delete('/:cardId', authenticateToken, deleteCard);
 
 // Exportamos las rutas de las tarjetas
 export default router;

@@ -29,13 +29,14 @@ class Api {
         }, 2000); // Redirige después de 2 segundos para mostrar el mensaje al usuario
       } else if (res.status === 403) {
         // Token prohibido, no tiene permisos
-        res.json().then((errorData) => {
+        return res.json().then((errorData) => {
           alert(`Error: ${errorData.message || 'Access Forbidden'}`);
+          throw new Error(errorData.message || 'Access Forbidden');
         });
       } else {
         return res.json().then((errorData) => {
           alert(`Error: ${errorData.message || res.statusText}`); // Mostrar mensaje de error al usuario
-          return Promise.reject(`Error: ${res.status}`);
+          throw new Error(errorData.message || res.statusText);
         });
       }
     }
@@ -43,7 +44,8 @@ class Api {
   }
 
   // Función para hacer solicitudes y manejar respuestas
-  request(url, options = {}) {
+  request (url, options = {}) {
+   console.log('error;', url)
     return fetch(url, options)
       .then(this._checkResponse)
       .catch((error) => {
@@ -112,15 +114,15 @@ class Api {
   }
 }
 
+const api = new Api({
+  baseUrl: process.env.REACT_APP_API_URL || 'http://localhost:3001/api', // Base URL asegurada para la API
+});
+
+export default api;
+
 // Usa la URL del servidor correcto
 // const api = new Api({
 //   baseUrl: 'https://instabook.mooo.com', // Dominio público del servidor
 // });
 
 // export default api;
-
-const api = new Api({
-  baseUrl: process.env.REACT_APP_API_URL || 'http://localhost:3001', // Cambia a tu URL base para producción si es necesario
-});
-
-export default api;

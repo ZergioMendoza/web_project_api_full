@@ -5,55 +5,33 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoading }) {
   const [name, setName] = useState('');
   const [link, setLink] = useState('');
 
-  // Manejar el envío del formulario
   async function handleSubmit(e) {
     e.preventDefault();
 
-    // Verificar si los valores son válidos
     if (!name || !link) return;
 
     try {
-      // Setear el estado de carga en true
-      onAddPlace({ isLoading: true });
-
-      // Crear el objeto de datos de la tarjeta
       const cardData = { name, link };
 
-      // Hacer la solicitud al backend para crear la tarjeta
-      const response = await fetch('http://localhost:5000/cards', {
+      // Enviar los datos al backend
+      const response = await fetch('http://localhost:3001/api/cards', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`, // Incluyendo el token en el encabezado
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(cardData),
       });
 
       const data = await response.json();
+      if (!response.ok) throw new Error(data.error || 'Error creando la tarjeta');
 
-      if (!response.ok) {
-        if (response.status === 403) {
-          // Token no válido o expirado, redirigir al login
-          console.log('Token expirado o inválido. Redirigiendo a inicio de sesión...');
-          localStorage.removeItem('token');
-          window.location.href = '/signin'; // Redirigir al login
-        } else {
-          throw new Error(data.error || 'Error al crear la tarjeta');
-        }
-      }
-
-      // Llamar a la función de agregar tarjeta si la respuesta es exitosa
-      onAddPlace(data);  // Pasar la nueva tarjeta al componente principal
+      onAddPlace(data); // Añadir la tarjeta
       onClose(); // Cerrar el popup
-
     } catch (error) {
       console.error('Error creando la tarjeta:', error);
-    } finally {
-      // Asegurarse de cambiar el estado de carga después de la solicitud
-      onAddPlace({ isLoading: false });
     }
 
-    // Limpiar los campos del formulario
     setName('');
     setLink('');
   }

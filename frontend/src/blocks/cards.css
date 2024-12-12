@@ -8,6 +8,7 @@
 }
 
 .cards {
+  margin-top: 180px; /* Empujamos el contenido hacia abajo para que no se sobreponga al perfil */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px 17px;
@@ -96,4 +97,23 @@
     grid-template-columns: 1fr;
     padding: 0 1.2rem;
   }
+}
+
+/* Contenedor para las tarjetas */
+.cards-container {
+  margin-top: 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Usamos grid para las tarjetas */
+  gap: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* Establecer el alto para permitir desplazamiento de las tarjetas */
+.cards-wrapper {
+  overflow-y: auto; /* Esto permitirá que las tarjetas se desplacen */
+  max-height: calc(100vh - 150px); /* Restamos el alto del perfil fijo para que el área de las tarjetas no se solape */
+  padding: 1rem;
 }

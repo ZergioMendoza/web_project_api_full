@@ -1,3 +1,4 @@
+/* General Popup Styles */
 .popup {
   display: none; /* Ocultar por defecto */
   z-index: 999;
@@ -11,12 +12,15 @@
   align-items: center;
 }
 
+/* Titulo dentro del Popup */
 .popup__title {
   color: #000;
   font-family: "Inter", Arial, sans-serif;
   font-size: 1.5rem;
   margin: 0 0 1.5rem;
 }
+
+/* Contenedor del Popup */
 .popup__container {
   width: 26.875rem;
   position: relative;
@@ -26,6 +30,7 @@
   box-sizing: border-box;
 }
 
+/* Input dentro del Popup */
 .popup__input {
   border: none;
   width: 100%;
@@ -38,18 +43,20 @@
   box-sizing: border-box;
 }
 
+/* Contenedor de Imagen dentro del Popup */
 .popup__container_image {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: transparent; /* Elimina fondo del contenedor */
-  max-width: 90%; /* Ajusta ancho máximo */
-  max-height: 90%; /* Ajusta alto máximo */
-  overflow: hidden; /* Evita desbordamientos */
+  background-color: transparent;
+  max-width: 90%;
+  max-height: 90%;
+  overflow: hidden;
 }
 
+/* Clase para Popup Abierto */
 .popup_opened {
   display: flex;
   position: fixed;
@@ -57,10 +64,12 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  box-sizing: border-box;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  justify-content: center;
+  align-items: center;
 }
 
+/* Botón de Envío */
 .popup__submit {
   margin: 3rem 0 0;
   width: 100%;
@@ -73,9 +82,11 @@
   font-size: 1.125rem;
   cursor: pointer;
 }
+
 .popup__submit:hover {
   opacity: 0.8;
 }
+
 .popup__submit:disabled {
   opacity: 0.8;
   background-color: #fff;
@@ -83,27 +94,7 @@
   color: grey;
 }
 
-.popup__close {
-  width: 10px; /* Ancho del botón */
-  height: 2.5rem; /* Altura del botón */
-  border: none; /* Sin borde */
-  position: absolute;
-  top: -2.5rem; /* Posición en la parte superior */
-  right: -2.5rem; /* Posición en la parte derecha */
-  cursor: pointer;
-  background-image: url(../images/icon/close-button.svg); /* Imagen de fondo */
-  background-size: contain; /* Ajusta la imagen para que encaje dentro del botón */
-  background-repeat: no-repeat; /* Evita que la imagen se repita */
-  background-position: center; /* Centra la imagen dentro del botón */
-}
-
-.popup__close img {
-  width: 10px;
-  height: 20px;
-
-
-}
-
+/* Botón de Cerrar */
 .popup__close {
   width: 2.5rem;
   height: 2.5rem;
@@ -112,69 +103,55 @@
   top: -2.5rem;
   right: -2.5rem;
   cursor: pointer;
-  
+  background-image: url(../images/icon/close-button.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .popup__close:hover {
   opacity: 0.6;
 }
 
+/* Ajustes en dispositivos pequeños */
 @media screen and (max-width: 576px) {
   .popup__close {
     top: -3rem;
     right: 0.2rem;
   }
+
   .popup__container {
     width: 88%;
-    box-sizing: border-box;
     padding: 1.56rem 1.38rem;
   }
+
   .popup__title {
     font-size: 1.125rem;
     margin-bottom: 4.5rem;
   }
 }
 
-.newplaces {
-  display: none;
-}
-
-
-.popup__input_type_error {
+/* Errores en Input */
+.popup__input-type_error {
   border-color: rgb(255, 0, 0);
 }
 
-.popup__button_disabled {
-  border-color: rgb(0, 23, 99);
-}
-
-.popup__newplaces-submit {
-  margin: 3rem 0 0;
-  width: 100%;
-  padding: 0.875rem;
-  background-color: #000;
-  color: #fff;
-  border: none;
-  border-radius: 0.125rem;
-  font-family: "Inter", Arial, sans-serif;
-  font-size: 1.125rem;
-  cursor: pointer;
-}
-
-
-
 .popup__input-error {
-  color: rgb(255, 24, 8); /* Color del mensaje de error */
+  color: rgb(255, 24, 8);
   font-size: 12px;
   margin-top: 4px;
 }
 
-.popup__input_type_error + .popup__input-error {
-  visibility: visible; /* Mostrar el mensaje de error cuando hay error */
-  border-color: rgb(255, 0, 0);
+.popup__input-type_error + .popup__input-error {
+  visibility: visible;
 }
 
+/* Botón Disabled en Popup */
+.popup__button_disabled {
+  border-color: rgb(0, 23, 99);
+}
 
+/* Estilos adicionales para nuevo botón */
 .popup__submit-newPlaces {
   margin: 3rem 0 0;
   width: 100%;
@@ -195,18 +172,16 @@
   color: rgb(0, 0, 0);
 }
 
-
+/* Clase para cuando el Popup está abierto */
 .popup_is-opened {
   display: flex;
-  
   z-index: 999;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  background-color: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
-  /* Estilos adicionales para cuando el popup esté abierto */
 }

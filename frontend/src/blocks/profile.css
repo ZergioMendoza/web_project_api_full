@@ -6,29 +6,18 @@
     margin: 2.5rem auto 3.125rem;
 }
 .profile__name {
-    font-size: 2.625rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 3rem;
-    margin-right: 1.125rem;
-    display: inline;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+  font-size: 2.625rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
 }
-
-.profile__avatar
-{
-
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    margin-right: 1.875rem;
-    color: rgb(245, 245, 245);
-    object-fit: cover;
-    background-size: 120px;
+.profile__avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-right: 1.875rem;
+  object-fit: cover;
 }
-
 .profile__avatar-container {
   position: relative; /* Para permitir posicionamiento absoluto del ícono */
   width: 7.5rem; /* Igual que el avatar */
@@ -75,7 +64,7 @@
         font-size: 1.125rem;
         margin: 0 0 2.25rem;
       }
-   
+
       .profile__avatar {
         margin: 0 0 1.64rem;
       }
@@ -94,4 +83,46 @@
         .profile__name {
           font-size: 2rem;
         }
+    }
+
+    .profile-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #132436;
+      padding: 2rem;
+      z-index: 10; /* Para asegurarnos de que el perfil quede por encima de otros elementos */
+      display: flex;
+      justify-content: space-between; /* Coloca los elementos del perfil correctamente */
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    /* Ajustar el contenido del perfil */
+    .profile {
+      color: #ffffff;
+      font-family: Inter;
+      display: flex;
+      align-items: center;
+    }
+
+    .profile__name {
+      font-size: 2rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .profile__avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-right: 1.875rem;
+      object-fit: cover;
+    }
+
+    /* Aseguramos que el resto de la página no se solape con el perfil fijo */
+    .page {
+      padding-top: 150px; /* Esto asegura que el contenido principal se desplace hacia abajo y no se oculte debajo del perfil */
     }

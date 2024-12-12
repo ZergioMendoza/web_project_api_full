@@ -1,4 +1,3 @@
-
 import React, { useContext } from 'react';
 import CurrentUserContext from './Contexts/CurrentUserContext';
 
@@ -6,7 +5,6 @@ export default function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   const currentUser = useContext(CurrentUserContext);
 
   const isOwn = card.owner._id === currentUser._id; // Verifica si el usuario actual es el propietario
-  //const isLiked = card.likes.some(i => i._id === currentUser._id); // Verifica si el usuario actual le dio "like"
   const isLiked = card.isLiked; // Verifica si el usuario actual le dio "like"
 
   const cardDeleteButtonClassName = `cards__delete-icon ${isOwn ? 'cards__delete-icon_visible' : 'cards__delete-icon_hidden'}`;
@@ -30,7 +28,7 @@ export default function Card({ card, onCardClick, onCardLike, onCardDelete }) {
         <div className="cards__like-container">
           <button
             className={cardLikeButtonClassName}
-            onClick={() => onCardLike(card)}
+            onClick={() => onCardLike(card)} // Llama la función onCardLike al hacer click
             aria-label="Like card"
           />
           {/*<span className="cards__like-count">{card.likes.length}</span>*/}
@@ -39,4 +37,3 @@ export default function Card({ card, onCardClick, onCardLike, onCardDelete }) {
     </article>
   );
 }
-

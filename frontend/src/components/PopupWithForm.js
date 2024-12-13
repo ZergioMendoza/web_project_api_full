@@ -34,7 +34,6 @@ function PopupWithForm({
       onClick={handleOverlayClick}
       role="dialog"
       aria-labelledby={`${name}-title`}
-      aria-hidden={!isOpen}
     >
       <div className="popup__container">
         <h2 className="popup__title" id={`${name}-title`}>

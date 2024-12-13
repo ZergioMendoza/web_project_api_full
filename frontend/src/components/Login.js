@@ -13,20 +13,16 @@ const Login = ({ onLogin }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      // Llamamos a la función onLogin, la cual hace la solicitud al backend
-      await onLogin(email, password);
-      //navigate('/'); // Redirigimos a la página principal después de iniciar sesión
+      await onLogin(email, password); // Llamada al backend
+      //navigate('/'); // Redirigir al inicio
     } catch (error) {
-      setErrorMessage('Error en las credenciales. Intenta nuevamente.'); // Muestra mensaje de error
-      setIsErrorPopupOpen(true); // Mostrar el popup de error
+      setErrorMessage('Error en las credenciales. Intenta nuevamente.');
+      setIsErrorPopupOpen(true);
     }
   };
 
-  const closeErrorPopup = () => {
-    setIsErrorPopupOpen(false); // Cerrar el popup de error
-  };
+  const closeErrorPopup = () => setIsErrorPopupOpen(false);
 
   return (
     <div className="auth login">
@@ -49,12 +45,10 @@ const Login = ({ onLogin }) => {
         <button type="submit">Iniciar sesión</button>
       </form>
 
-      {/* Texto adicional */}
-      <p>
+      <p className="register-text">
         ¿Aún no eres miembro? <Link to="/signup">Regístrate aquí</Link>
       </p>
 
-      {/* Popup de error */}
       <ErrorPopup isOpen={isErrorPopupOpen} onClose={closeErrorPopup} message={errorMessage} />
     </div>
   );

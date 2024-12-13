@@ -1,3 +1,4 @@
+// controllers/cards.js
 import Card from "../models/card.js";
 
 // Obtener todas las tarjetas
@@ -13,8 +14,6 @@ export const getAllCards = async (req, res) => {
 // Crear una nueva tarjeta
 export const createCard = async (req, res) => {
   const { name, link } = req.body;
-
-  console.log('owner', req.user);
 
   try {
     const card = new Card({ name, link, owner: req.user._id });
@@ -37,5 +36,53 @@ export const deleteCard = async (req, res) => {
     return res.send({ message: 'Tarjeta eliminada exitosamente' }); // Retornar mensaje de éxito
   } catch (err) {
     return res.status(500).send({ message: 'Error al eliminar tarjeta', error: err }); // Retornar error si hay un problema
+  }
+};
+
+
+
+// Controlador para agregar un "like"
+export const likeCard = async (req, res) => {
+  try {
+    const { cardId } = req.params;
+    const userId = req.user._id; // Asegúrate de que req.user esté disponible a través de un middleware de autenticación
+
+    const card = await Card.findByIdAndUpdate(
+      cardId,
+      { $addToSet: { likes: userId } }, // Agrega el usuario al array de likes si no está presente
+      { new: true } // Devuelve el documento actualizado
+    );
+
+    if (!card) {
+      return res.status(404).json({ message: 'Card not found' });
+    }
+
+    res.status(200).json(card);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error liking card' });
+  }
+};
+
+// Controlador para eliminar un "like"
+export const unlikeCard = async (req, res) => {
+  try {
+    const { cardId } = req.params;
+    const userId = req.user._id;
+
+    const card = await Card.findByIdAndUpdate(
+      cardId,
+      { $pull: { likes: userId } }, // Elimina el usuario del array de likes
+      { new: true }
+    );
+
+    if (!card) {
+      return res.status(404).json({ message: 'Card not found' });
+    }
+
+    res.status(200).json(card);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error unliking card' });
   }
 };

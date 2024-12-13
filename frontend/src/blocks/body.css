@@ -1,16 +1,15 @@
-/* Estilos generales de la página */
 .page {
-
+  max-width: 2000px;
+  min-height: 100vh; /* Garantiza que cubra toda la altura de la ventana */
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Asegura que el contenido esté en columna */
+  justify-content: space-between; /* Espacia contenido, como header y footer */
   background: linear-gradient(to right, #132436 0%, #A50044 100%);
   margin: 0 auto;
-  padding: 2.5rem 1rem 2.5rem; /* Espaciado general para la página */
-  box-sizing: border-box;
-  position: relative; /* Para el posicionamiento relativo de las cartas */
+  padding: 2.8rem 12.5rem 3.75rem;
+  box-sizing: border-box; /* Incluye padding en las dimensiones totales */
 }
 
-/* Ajustes en la estructura de la página en pantallas medianas */
 @media screen and (max-width: 992px) {
   .page {
     width: 100%;
@@ -19,35 +18,9 @@
   }
 }
 
-/* Ajustes en la estructura de la página en pantallas pequeñas */
 @media screen and (max-width: 576px) {
   .page {
     width: 100%;
     padding: 1.75rem 0 2.25rem;
-  }
-}
-
-/* Contenedor de tarjetas */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px 17px;
-  max-width: 100%; /* Ajustar al 100% del contenedor */
-  margin-top: 10rem; /* Espaciado para que las tarjetas no se superpongan con el perfil */
-  font-size: 0;
-}
-
-/* Ajuste para pantallas medianas */
-@media screen and (max-width: 992px) {
-  .cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Ajuste para pantallas pequeñas */
-@media screen and (max-width: 576px) {
-  .cards {
-    grid-template-columns: 1fr;
-    padding: 0 1.2rem;
   }
 }

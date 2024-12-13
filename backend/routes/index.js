@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import { login, register } from '../controllers/userController.js';
 import { getCurrentUser } from '../controllers/users.js';
 
+
 dotenv.config();
 
 const router = express.Router();

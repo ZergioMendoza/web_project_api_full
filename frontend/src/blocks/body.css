@@ -4,7 +4,12 @@
   display: flex;
   flex-direction: column; /* Asegura que el contenido esté en columna */
   justify-content: space-between; /* Espacia contenido, como header y footer */
-  background: linear-gradient(to right, #132436 0%, #A50044 100%);
+  background: radial-gradient(circle,
+  #FF4500 10%, /* Naranja fuego */
+  #FF0000 30%, /* Rojo brillante */
+  #8B0000 60%, /* Rojo oscuro */
+  #2F0000 80%, /* Rojo casi negro */
+  #000000 100% /* Negro absoluto */);
   margin: 0 auto;
   padding: 2.8rem 12.5rem 3.75rem;
   box-sizing: border-box; /* Incluye padding en las dimensiones totales */

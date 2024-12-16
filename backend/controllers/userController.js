@@ -39,7 +39,7 @@ export const login = async (req, res) => {
     res.json({ token });
 
   } catch (error) {
-    // En lugar de solo hacer console.error(), se recomienda un sistema de log
+
     console.log('Login error: ', error);
     res.status(500).json({ message: 'Server error, please try again later' });
   }

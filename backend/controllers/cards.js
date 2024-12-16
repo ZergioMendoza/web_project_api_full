@@ -59,7 +59,7 @@ export const likeCard = async (req, res) => {
 
     res.status(200).json(card);
   } catch (error) {
-    console.error(error);
+
     res.status(500).json({ message: 'Error liking card' });
   }
 };
@@ -82,7 +82,7 @@ export const unlikeCard = async (req, res) => {
 
     res.status(200).json(card);
   } catch (error) {
-    console.error(error);
+
     res.status(500).json({ message: 'Error unliking card' });
   }
 };

@@ -21,7 +21,7 @@ export default function Header({ onLogout, isAuthenticated }) {
           setUserEmail(userData.email); // Suponiendo que la API devuelve un campo "email"
         })
         .catch((error) => {
-          console.error('Error al obtener los datos del usuario:', error);
+
           // Maneja el error, por ejemplo, eliminando el token si hay un error
           localStorage.removeItem('token');
           onLogout(); // Llamar a onLogout si es necesario

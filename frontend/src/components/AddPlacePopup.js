@@ -12,9 +12,9 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoading }) {
 
     try {
       const cardData = { name, link };
-      onAddPlace(cardData); // Añadir la tarjeta      
+      onAddPlace(cardData); // Añadir la tarjeta
     } catch (error) {
-      console.error('Error creando la tarjeta:', error);
+
     }
 
     setName('');

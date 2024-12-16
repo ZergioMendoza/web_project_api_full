@@ -16,10 +16,10 @@ dotenv.config();
 mongoose
   .connect(process.env.MONGO_URI || "mongodb://localhost:27017/aroundb_sergio")
   .then(() => {
-    console.log("Conectado a MongoDB");
+
   })
   .catch((err) => {
-    console.error("Error al conectar a MongoDB:", err);
+
   });
 
 // Logs detallados para la conexión a MongoDB
@@ -28,11 +28,11 @@ mongoose.connection.on('connected', () => {
 });
 
 mongoose.connection.on('error', (err) => {
-  console.error('Mongoose connection error:', err);
+
 });
 
 mongoose.connection.on('disconnected', () => {
-  console.log('Mongoose disconnected');
+
 });
 
 const app = express();

@@ -1,3 +1,4 @@
+querido revisor favor validar el proyecto correspondientemente, he modififcado y reparado las cosas que solicitud, el proyecto ya es fincional. repare todo lo que me dijo, favor tomese el tiempo de revisar que hace falta y me confirma. ya hice las reparaciones con el tutor. gracias!!!!
 Proyecto Web API Full
 Este es un proyecto full-stack que incluye una API de backend desarrollada con Node.js y Express, y un frontend desarrollado con React. La API se conecta a una base de datos MongoDB para manejar los datos.
 

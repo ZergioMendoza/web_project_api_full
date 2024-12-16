@@ -137,7 +137,7 @@ function App() {
       authenticateUser(data.token);  // Validamos al usuario
       //navigate('/');
     } catch (err) {
-      console.error(`Login error: ${err}`);
+
       setInfoMessage('Login failed. Please check your credentials.');
       setTooltipIcon(errorIcon);
       setInfoTooltipOpen(true);
@@ -147,12 +147,12 @@ function App() {
   const handleRegister = async (email, password) => {
     try {
       await register(email, password);
-      console.log('regisgtro correcto')
+
       setInfoMessage('Registration successful. You can now log in.');
       setTooltipIcon(successIcon);
       setInfoTooltipOpen(true);
     } catch (err) {
-      console.error(`Registration error: ${err}`);
+
       setInfoMessage('Registration failed. Please try again.');
       setTooltipIcon(errorIcon);
       setInfoTooltipOpen(true);

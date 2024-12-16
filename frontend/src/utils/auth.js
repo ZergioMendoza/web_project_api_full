@@ -19,7 +19,7 @@ export const register = (email, password) => {
     return response.json();
   })
   .catch(err => {
-    console.error("Error en la solicitud de registro:", err);
+
     throw err;
   });
 };
@@ -46,7 +46,7 @@ export const login = (email, password) => {
     return data;
   })
   .catch(err => {
-    console.error("Error en la solicitud de inicio de sesión:", err);
+
     throw err;
   });
 };
@@ -69,7 +69,7 @@ export const getUserInfo = (token) => {
     return response.json();
   })
   .catch(err => {
-    console.error("Error al obtener la información del usuario:", err);
+
     throw err;
   });
 };

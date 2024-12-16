@@ -1,9 +1,13 @@
-/* Estilo general para el body */
+
 body {
-  background: linear-gradient(to right, #132436 0%, #A50044 100%); /* Solo el fondo en el body */
-  margin: 0;
+  background: linear-gradient(135deg,
+  white 25%,
+  blue 70%,
+  rgb(197, 47, 47) 80%);
+  margin: 0; /* Quita el margen por defecto */
   font-family: 'Inter', Arial, sans-serif;
 }
+
 
 /* Estilos comunes para los formularios de Login y Register */
 .auth {

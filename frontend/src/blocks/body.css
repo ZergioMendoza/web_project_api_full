@@ -1,31 +1,58 @@
+/* Reseteo Global para Eliminar Bordes Blancos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Incluye padding y border dentro del tamaño del elemento */
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* Evita el scroll horizontal */
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", Arial, sans-serif;
+  background: radial-gradient(circle, #FF4500 10%, #FF0000 30%, #8B0000 60%, #2F0000 80%, #000000 100%);
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+}
+
+/* General Styles for the Page */
 .page {
-  max-width: 2000px;
-  min-height: 100vh; /* Garantiza que cubra toda la altura de la ventana */
+  max-width: 100%;
+  min-height: 100vh;
   display: flex;
-  flex-direction: column; /* Asegura que el contenido esté en columna */
-  justify-content: space-between; /* Espacia contenido, como header y footer */
-  background: radial-gradient(circle,
-  #FF4500 10%, /* Naranja fuego */
-  #FF0000 30%, /* Rojo brillante */
-  #8B0000 60%, /* Rojo oscuro */
-  #2F0000 80%, /* Rojo casi negro */
-  #000000 100% /* Negro absoluto */);
-  margin: 0 auto;
-  padding: 2.8rem 12.5rem 3.75rem;
-  box-sizing: border-box; /* Incluye padding en las dimensiones totales */
+  flex-direction: column;
+  justify-content: space-between;
+  background: radial-gradient(circle, #FF4500 10%, #FF0000 30%, #8B0000 60%, #2F0000 80%, #000000 100%);
+  margin: 0;
+  padding: 2.8rem 12.5rem 3.75rem; /* Padding por defecto */
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 992px) {
   .page {
-    width: 100%;
-    padding: 1.75rem 4rem 2.25rem;
-    box-sizing: border-box;
+    background: linear-gradient(
+      to right,
+      #000000 0%,       /* Negro inicia */
+      #000000 30%,      /* Negro extendido */
+      #8b0000 40%,      /* Rojo comienza */
+      #8b0000 70%,      /* Rojo extendido */
+      #ffcc00 80%,      /* Amarillo comienza */
+      #ffcc00 100%      /* Amarillo termina */
+    );
+    padding: 1.5rem; /* Reducción de padding para dispositivos medianos */
   }
 }
 
+/* Estilo específico para dispositivos pequeños, por ejemplo iPhones grandes */
 @media screen and (max-width: 576px) {
+  body {
+    padding: 1rem; /* Ajuste de padding en pantallas pequeñas */
+  }
+
   .page {
-    width: 100%;
-    padding: 1.75rem 0 2.25rem;
+    padding: 1rem; /* Ajuste de padding en la página */
   }
 }

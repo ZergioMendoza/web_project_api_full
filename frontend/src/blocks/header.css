@@ -50,3 +50,13 @@
 .header__logout:hover {
   color: #61dafb;
 }
+@media screen and (max-width: 576px) {
+  .header__logo {
+      margin-bottom: 32px;
+      width: 7.875rem;
+  }
+
+  .header {
+      padding-left: 1.69rem;
+    }
+}

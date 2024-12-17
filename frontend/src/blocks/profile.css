@@ -68,30 +68,29 @@
 
 @media screen and (max-width: 576px) {
   .profile__about {
-    font-size: 1.125rem;
-    margin: 0 0 2.25rem;
-  }
+      font-size: 1.125rem;
+      margin: 0 0 2.25rem;
+    }
 
-  .profile__avatar {
-    margin: 0 0 1.64rem;
-  }
+    .profile__avatar {
+      margin: 0 0 1.64rem;
+    }
 
-  .profile__info {
-    text-align: center;
+    .profile__info {
+      text-align: center;
   }
-
   .profile__name {
-    font-size: 1.375rem;
-    margin-right: 0.62rem;
-  }
-}
+      font-size: 1.375rem;
+      margin-right: 0.62rem;
+    }
 
-@media screen and (max-width: 992px) {
-  .profile__name {
-    font-size: 2rem;
   }
-}
 
+  @media screen and (max-width: 992px) {
+      .profile__name {
+        font-size: 2rem;
+      }
+  }
 /* Contenedor del perfil en la parte superior */
 .profile-container {
   position: fixed;
@@ -100,11 +99,7 @@
   width: 100%;
   background-color: #132436;
   padding: 2rem;
-  z-index: 10; /* Para asegurarnos de que el perfil quede por encima de otros elementos */
-  display: flex;
-  justify-content: space-between; /* Coloca los elementos del perfil correctamente */
-  align-items: center;
-  flex-wrap: wrap;
+  z-index: 10;
 }
 
 /* Aseguramos que el resto de la página no se solape con el perfil fijo */

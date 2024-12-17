@@ -1,27 +1,26 @@
-.cards__card {
-  background-color: #ffffff;
-  border-radius: 10px;
-  overflow: hidden;
-  height: 350px;
-  width: 282px;
-  position: relative;
-}
-
+/* Contenedor de las tarjetas */
 .cards {
-  margin-top: 180px; /* Empujamos el contenido hacia abajo para que no se sobreponga al perfil */
+  margin-top: 180px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px 17px;
   max-width: 1600px;
   margin: auto;
-  font-size: 0;
+}
+
+.cards__card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 350px;
+  width: 100%;
+  max-width: 282px;
 }
 
 .cards__image {
   width: 100%;
   height: 75%;
-  /* background-size: cover;
-  background-position: center; */
+  object-fit: cover;
 }
 
 .cards__like-icon {
@@ -32,13 +31,10 @@
   background-size: contain;
   transition: 0.4s ease-in-out;
   cursor: pointer;
-  border: none; /* Quita el borde */
-  background-color: transparent; /* Hace el fondo transparente */
-  padding: 0; /* Quita el relleno del botón */
 }
 
 .cards__like-color {
-  background-image: url(../images/icon/like-button-active.svg); /* Cambia a la imagen del botón activado */
+  background-image: url(../images/icon/like-button-active.svg);
 }
 
 .cards__delete-icon {
@@ -51,9 +47,6 @@
   top: 10px;
   right: 10px;
   cursor: pointer;
-  border: none; /* Quita el borde */
-  background-color: transparent; /* Hace el fondo transparente */
-  padding: 0; /* Quita el relleno del botón */
   transition: 0.4s ease-in-out;
 }
 
@@ -76,12 +69,11 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  margin: 0;
 }
 
 .cards__like-count {
-  font-size: 1.25rem; /* Tamaño más grande */
-  font-weight: bold;  /* Negrita */
+  font-size: 1.25rem;
+  font-weight: bold;
   margin-left: 10px;
   color: #2600fb;
 }
@@ -97,23 +89,10 @@
     grid-template-columns: 1fr;
     padding: 0 1.2rem;
   }
-}
 
-/* Contenedor para las tarjetas */
-.cards-container {
-  margin-top: 2rem;
-  max-width: 2080px;
-  margin: 0 auto;
-  padding: 1rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Usamos grid para las tarjetas */
-  gap: 2rem;
-  padding-bottom: 2rem;
-}
-
-/* Establecer el alto para permitir desplazamiento de las tarjetas */
-.cards-wrapper {
-  overflow-y: auto; /* Esto permitirá que las tarjetas se desplacen */
-  max-height: calc(100vh - 150px); /* Restamos el alto del perfil fijo para que el área de las tarjetas no se solape */
-  padding: 1rem;
+  .cards__card {
+    width: 100%;
+    height: auto;
+    max-width: none;
+  }
 }

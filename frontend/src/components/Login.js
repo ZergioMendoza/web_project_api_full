@@ -25,31 +25,33 @@ const Login = ({ onLogin }) => {
   const closeErrorPopup = () => setIsErrorPopupOpen(false);
 
   return (
-    <div className="auth login">
-      <h2>¿Quieres Ingresar?</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit">Iniciar sesión</button>
-      </form>
+    <div className="auth-container"> {/* Añadimos el contenedor específico */}
+      <div className="auth login">
+        <h2>¿Quieres Ingresar?</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Contraseña"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button type="submit">Iniciar sesión</button>
+        </form>
 
-      <p className="register-text">
-        ¿Aún no eres miembro? <Link to="/signup">Regístrate aquí</Link>
-      </p>
+        <p className="register-text">
+          ¿Aún no eres miembro? <Link to="/signup">Regístrate aquí</Link>
+        </p>
 
-      <ErrorPopup isOpen={isErrorPopupOpen} onClose={closeErrorPopup} message={errorMessage} />
+        {/* <ErrorPopup isOpen={isErrorPopupOpen} onClose={closeErrorPopup} message={errorMessage} /> */}
+      </div>
     </div>
   );
 };

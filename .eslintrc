@@ -1,6 +1,0 @@
-// .eslintrc.json
-{
-  "rules": {
-    "no-unused-vars": ["error", { "argsIgnorePattern": "next" }]
-  }
-}

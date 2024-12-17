@@ -1,121 +1,70 @@
+/* auth.css */
 
-body {
-  background: linear-gradient(135deg,
-  white 25%,
-  blue 70%,
-  rgb(197, 47, 47) 80%);
-  margin: 0; /* Quita el margen por defecto */
-  font-family: 'Inter', Arial, sans-serif;
+/* Estilo de fondo solo para la página de registro */
+.auth-container {
+  background: linear-gradient(135deg, white 25%, blue 70%, rgb(197, 47, 47) 80%);
+  min-height: 100vh; /* Asegura que ocupe toda la altura de la ventana */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
-/* Estilos comunes para los formularios de Login y Register */
+/* Estilos comunes para los formularios de login y registro */
 .auth {
   max-width: 400px;
   width: 100%;
   text-align: center;
   padding: 20px;
-
   border-radius: 10px;
   box-shadow: 0 4px 30px rgba(240, 18, 18, 0.1);
   font-family: 'Inter', Arial, sans-serif;
-
-  /* Centrado específico para las páginas de Login y Register */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Asegura que ocupe toda la altura de la ventana */
 }
 
-/* Estilo del título h2 */
-h2 {
-  color: #360ec5;
+/* Estilos específicos para el formulario de registro */
+.auth-container .auth h2 {
+  color: #ffffff;
   margin-bottom: 20px;
 }
 
-/* Estilo de los inputs */
-input {
+.auth-container .auth input {
   padding: 12px;
-  margin-bottom: 15px; /* Espacio entre inputs */
-  border: 1px solid #030202;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
-  width: 100%;
 }
 
-input:focus {
-  border-color: #4b40ae;
-}
-
-/* Estilo de los botones */
-button {
+.auth-container .auth button {
   padding: 12px;
-  background-color: #000000;
+  background-color: #1212ce;
   color: white;
   border: none;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
-  width: 100%;
+  transition: background-color 0.3s;
+  margin-top: 10px;
 }
 
-button:hover {
+.auth-container .auth button:hover {
   background-color: #280a9e;
 }
 
-/* Estilo del párrafo con el enlace */
-.register-text {
-  margin-top: 20px;
+.auth-container .register-text {
+  margin-top: 10px;
   font-size: 14px;
-  color: #02d9ff;
+  color: aqua;
 }
 
-.register-text a {
+.auth-container .register-text a {
   color: #ffffff;
   text-decoration: none;
 }
 
-.register-text a:hover {
+.auth-container .register-text a:hover {
   text-decoration: underline;
-}
-
-/* Error popup */
-.error-popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.error-popup_open {
-  display: flex;
-}
-
-.error-popup__content {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-}
-
-.error-popup__image {
-  max-width: 100%;
-  height: auto;
-}
-
-.error-popup__close {
-  margin-top: 10px;
-  padding: 10px;
-  background: #be0303;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
 }

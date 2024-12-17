@@ -4,7 +4,9 @@ import CurrentUserContext from './Contexts/CurrentUserContext';
 export default function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   const currentUser = useContext(CurrentUserContext);
 
-  const isOwn = card.owner._id === currentUser._id; // Verifica si el usuario actual es el propietario
+  const isOwn = card.owner._id === currentUser._id;
+  console.log(isOwn);
+   // Verifica si el usuario actual es el propietario
   // const isLiked = card.isLiked; // Verifica si el usuario actual le dio "like"
   const isLiked = card.likes.length>0;
   const cardDeleteButtonClassName = `cards__delete-icon ${isOwn ? 'cards__delete-icon_visible' : 'cards__delete-icon_hidden'}`;

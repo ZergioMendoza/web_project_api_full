@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.d1821f10.css",
-    "main.js": "/static/js/main.9db9d541.js",
+    "main.css": "/static/css/main.2c0a84e7.css",
+    "main.js": "/static/js/main.a771ae6d.js",
     "static/js/488.e75445ad.chunk.js": "/static/js/488.e75445ad.chunk.js",
     "static/media/Inter-SemiBold.woff?v=3.19": "/static/media/Inter-SemiBold.cca62d21c8c555c392e5.woff",
     "static/media/Inter-Black.woff?v=3.19": "/static/media/Inter-Black.c6938660eec019fefd68.woff",
@@ -15,17 +15,17 @@
     "static/media/like-button.svg": "/static/media/like-button.49570bcb1d637fdb38e5.svg",
     "static/media/Trash.svg": "/static/media/Trash.8cb59aa98088a1653f62.svg",
     "static/media/like-button-active.svg": "/static/media/like-button-active.226461bd64622361ffb2.svg",
-    "static/media/close-button.svg": "/static/media/close-button.b197253711bbf0792af1.svg",
     "index.html": "/index.html",
+    "static/media/close-button.svg": "/static/media/close-button.b197253711bbf0792af1.svg",
     "static/media/edit-button.svg": "/static/media/edit-button.a1892ea72cb87c8fc3aa.svg",
     "static/media/Vector.svg": "/static/media/Vector.a086f758840ae814ecdece4799d2cf40.svg",
     "static/media/add-button.svg": "/static/media/add-button.d86bb2edc2f6eadb96b7.svg",
-    "main.d1821f10.css.map": "/static/css/main.d1821f10.css.map",
-    "main.9db9d541.js.map": "/static/js/main.9db9d541.js.map",
+    "main.2c0a84e7.css.map": "/static/css/main.2c0a84e7.css.map",
+    "main.a771ae6d.js.map": "/static/js/main.a771ae6d.js.map",
     "488.e75445ad.chunk.js.map": "/static/js/488.e75445ad.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d1821f10.css",
-    "static/js/main.9db9d541.js"
+    "static/css/main.2c0a84e7.css",
+    "static/js/main.a771ae6d.js"
   ]
 }

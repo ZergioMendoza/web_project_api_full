@@ -46,4 +46,4 @@ Dirección IP: 35.247.206.111
 
 
 
-Falta implementar likes, cors, logger
+

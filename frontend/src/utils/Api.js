@@ -131,7 +131,7 @@ class Api {
 
 const api = new Api({
   baseUrl: process.env.REACT_APP_API_URL || 'http://localhost:3001/api',
-  baseUrl: process.env.REACT_APP_API_URL || 'https://instabook.mooo.com', // Base URL asegurada para la API
+  // baseUrl: process.env.REACT_APP_API_URL || 'https://instabook.mooo.com', // Base URL asegurada para la API
 });
 
 export default api;

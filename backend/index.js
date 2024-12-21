@@ -45,7 +45,7 @@ app.use((req, res, next) => {
 });
 
 // 4. Configuración de CORS y JSON
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+app.use(cors({ origin: ['http://localhost:3000', 'https://instabook.mooo.com', 'https://www.instabook.mooo.com']}));
 app.use(express.json());
 
 // 5. Middleware para procesar cuerpos de solicitudes (si lo necesitas)

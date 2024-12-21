@@ -18,7 +18,10 @@ export const createCard = async (req, res) => {
   try {
     const card = new Card({ name, link, owner: req.user._id });
     await card.save();
-    return res.status(201).send(card); // Retornar la tarjeta creada
+    Card.findById(card._id).populate('owner').then(cardFull => {
+      return res.status(201).send(cardFull); // Retornar la tarjeta creada
+    })
+
   } catch (err) {
     return res.status(400).send({ message: 'Error al crear la tarjeta', error: err }); // Retornar error si hay un problema
   }
@@ -51,7 +54,7 @@ export const likeCard = async (req, res) => {
       cardId,
       { $addToSet: { likes: userId } }, // Agrega el usuario al array de likes si no está presente
       { new: true } // Devuelve el documento actualizado
-    );
+    ).populate('owner');
 
     if (!card) {
       return res.status(404).json({ message: 'Card not found' });
@@ -74,7 +77,7 @@ export const unlikeCard = async (req, res) => {
       cardId,
       { $pull: { likes: userId } }, // Elimina el usuario del array de likes
       { new: true }
-    );
+    ).populate('owner');
 
     if (!card) {
       return res.status(404).json({ message: 'Card not found' });

@@ -33,7 +33,7 @@ console.log(card);
             onClick={() => onCardLike(card)} // Llama la función onCardLike al hacer click
             aria-label="Like card"
           />
-          {/*<span className="cards__like-count">{card.likes.length}</span>*/}
+          <span className="cards__like-count">{card.likes.length}</span>
         </div>
       </div>
     </article>

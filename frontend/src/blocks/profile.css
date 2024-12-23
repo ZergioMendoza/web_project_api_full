@@ -1,10 +1,36 @@
 /* Contenedor del perfil */
 .profile {
-  color: #ffffff;
+  color: #000000;
   font-family: Inter;
   display: flex;
   align-items: center;
   margin: 2.5rem auto 3.125rem;
+}
+.profile__about {
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 1rem 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: rgb(0, 0, 0);
+}
+
+.profile-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #132436;
+  padding: 2rem;
+  z-index: 10;
+}
+
+/* Aseguramos que el resto de la página no se solape con el perfil fijo */
+.page {
+  padding-top: 150px; /* Esto asegura que el contenido principal se desplace hacia abajo y no se oculte debajo del perfil */
 }
 
 /* Estilo del nombre de usuario */
@@ -14,6 +40,7 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
 
 /* Avatar */
 .profile__avatar {
@@ -38,15 +65,15 @@
   height: 7.5rem; /* Igual que el avatar */
 }
 
-/* Ícono de edición del avatar */
+
 .profile__avatar-edit-icon {
-  position: absolute; /* Posición absoluta para colocar el ícono sobre la imagen */
-  top: 50%; /* Centra el ícono verticalmente */
-  left: 50%; /* Centra el ícono horizontalmente */
-  transform: translate(-50%, -50%); /* Ajusta el centro del ícono */
-  width: 26px; /* Ajusta el tamaño del ícono */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 26px;
   height: 26px;
-  display: none; /* Oculta el ícono por defecto */
+  display: none;
 }
 
 /* Mostrar el ícono de edición cuando se pasa el mouse sobre el contenedor */
@@ -55,15 +82,21 @@
 }
 
 /* Descripción o "acerca de" el usuario */
-.profile__about {
-  font-size: 1.125rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  margin: 1rem 0;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+
+
+.profile-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #132436;
+  padding: 2rem;
+  z-index: 10;
+}
+
+/* Aseguramos que el resto de la página no se solape con el perfil fijo */
+.page {
+  padding-top: 150px; /* Esto asegura que el contenido principal se desplace hacia abajo y no se oculte debajo del perfil */
 }
 
 @media screen and (max-width: 576px) {
@@ -92,17 +125,4 @@
       }
   }
 /* Contenedor del perfil en la parte superior */
-.profile-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #132436;
-  padding: 2rem;
-  z-index: 10;
-}
 
-/* Aseguramos que el resto de la página no se solape con el perfil fijo */
-.page {
-  padding-top: 150px; /* Esto asegura que el contenido principal se desplace hacia abajo y no se oculte debajo del perfil */
-}

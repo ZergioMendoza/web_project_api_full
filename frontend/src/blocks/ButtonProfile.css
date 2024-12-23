@@ -6,24 +6,30 @@
   border: 1px solid #fff;
   background-color: transparent;
   cursor: pointer;
+  position: relative;
+  left: 12cm;
 }
 
 .profile__edit-button:hover {
   opacity: 0.6;
 }
 
-/* Botón de Añadir */
-.profile__add-button {
-  width: 9.375rem;
-  height: 3.125rem;
+
+.profile__add-button
+{
+    width: 9.375rem;
+    height: 3.125rem;
+
   background: url(../images/icon/add-button.svg) no-repeat center;
-  background-color: transparent;
-  border: 2px solid #fff;
-  margin: 0 auto;
-  position: relative;
-  top: 0;
-  left: 0;
-  cursor: pointer;
+    background-color: transparent;
+    border: 2px solid #fff;
+    padding: 0;
+    position: relative;
+    left: 750px;
+    top: -80px;
+    justify-content: end;
+    margin-left: auto;
+     cursor: pointer;
 }
 
 .profile__add-button:hover {

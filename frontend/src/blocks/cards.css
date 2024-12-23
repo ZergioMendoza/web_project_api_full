@@ -40,6 +40,9 @@
   background-size: contain;
   transition: 0.4s ease-in-out;
   cursor: pointer;
+  border: none; /* Elimina cualquier borde existente */
+  outline: none;
+  background-color: #ffffff;
 }
 
 .cards__like-color {

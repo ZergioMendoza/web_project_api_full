@@ -1,6 +1,6 @@
 
-const BASE_URL = 'http://localhost:3001/api';
-//  const BASE_URL = 'https://api.instabook.mooo.com/api';
+// const BASE_URL = 'http://localhost:3001/api';
+ const BASE_URL = 'https://api.instabook.mooo.com/api';
 // activar y desactivar para local y al servidor
 
 

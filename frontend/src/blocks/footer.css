@@ -1,15 +1,20 @@
 .footer__copyright {
-    color: #545454;
-    font-family: "Inter", Arial, sans-serif;
-    font-size: 1.125rem;
-    margin: 4.25rem 0 0;
+  color: #545454;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 1.125rem;
+  margin: 4.25rem 0 0;
+  padding: 1.5rem 2rem; /* Un poco más de padding */
+  background-color: #f7f7f7; /* Fondo suave */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
+
 
 .footer {
     color: #ffffff;
   }
 
- 
+
   @media screen and (max-width: 576px) {
     .footer {
       text-align: center;

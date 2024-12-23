@@ -40,7 +40,7 @@ export const login = async (req, res) => {
 
   } catch (error) {
 
-    console.log('Login error: ', error);
+
     res.status(500).json({ message: 'Server error, please try again later' });
   }
 };
@@ -57,7 +57,7 @@ export const register = async (req, res) => {
 
     res.send({_id: newUser._id, email:  newUser.email});
   } catch (error) {
-    console.log('Register error: ', error);
+
     res.status(500).json({ message: 'Server error, please try again later' });
   }
 }

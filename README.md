@@ -44,6 +44,27 @@ Tipo de Registro: A
 Nombre del Registro: @ (o sin subdominio)
 Dirección IP: 35.247.206.111
 
+ssh "Linux myfirstwebsite 6.1.0-28-cloud-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.119-1 (2024-11-22) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Sat Dec 21 16:20:09 2024 from 35.235.241.160
+virtualassistancesm@myfirstwebsite:~$ 
+
+
+
+
+ssh sergiomendoza@instabook.mooo.com
+
+
+
+
+
+"
 
 
 

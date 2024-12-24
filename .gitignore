@@ -19,3 +19,6 @@ yarn.lock
 
 # Ignorar caché de ESLint
 .eslintcache
+
+# Ignorar carpeta de build
+build/

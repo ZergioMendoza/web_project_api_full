@@ -4,7 +4,7 @@
   align-items: center;
 
   background-color: #282c34;
-  color: rgb(230, 29, 29);
+  color: rgb(255, 255, 255);
   position: fixed; /* Hace que el header quede fijo en la parte superior */
   top: 0;
   left: 0;
@@ -52,11 +52,30 @@
 }
 @media screen and (max-width: 576px) {
   .header__logo {
-      margin-bottom: 32px;
-      width: 7.875rem;
+    margin-bottom: 32px;
+    width: 7.875rem;
   }
 
   .header {
-      padding-left: 1.69rem;
-    }
+    padding-left: 1.69rem;
+  }
+
+  /* Reducir tamaño del link para facilitar la visibilidad del botón de logout */
+  .header__link {
+    font-size: 12px; /* Reducir tamaño de fuente */
+    padding: 2px 6px; /* Ajustar espacio interno */
+    white-space: nowrap; /* Evitar que el texto se corte */
+    overflow: hidden; /* Asegura que no se extienda más allá de su contenedor */
+    text-overflow: ellipsis; /* Añade puntos suspensivos si es necesario */
+    max-width: 80px; /* Limita el ancho del enlace */
+  }
+
+  .header__auth-links {
+    gap: 8px; /* Reduce el espacio entre los elementos */
+  }
+
+  .header__logout {
+    font-size: 14px; /* Mantiene el logout un poco más grande que el link */
+    padding: 5px 10px; /* Espaciado interno para una mejor interacción */
+  }
 }

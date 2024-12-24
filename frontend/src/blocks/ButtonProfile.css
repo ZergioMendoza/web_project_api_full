@@ -6,30 +6,28 @@
   border: 1px solid #fff;
   background-color: transparent;
   cursor: pointer;
-  position: relative;
-  left: 12cm;
+  position: relative; /* Mantenemos el diseño original */
+  left: 12cm; /* Posición original */
 }
 
 .profile__edit-button:hover {
   opacity: 0.6;
 }
 
-
-.profile__add-button
-{
-    width: 9.375rem;
-    height: 3.125rem;
-
+/* Botón de Agregar */
+.profile__add-button {
+  width: 9.375rem;
+  height: 3.125rem;
   background: url(../images/icon/add-button.svg) no-repeat center;
-    background-color: transparent;
-    border: 2px solid #fff;
-    padding: 0;
-    position: relative;
-    left: 750px;
-    top: -80px;
-    justify-content: end;
-    margin-left: auto;
-     cursor: pointer;
+  background-color: transparent;
+  border: 2px solid #fff;
+  padding: 0;
+  position: relative; /* Mantenemos el diseño original */
+  left: 750px; /* Posición original */
+  top: -80px; /* Posición original */
+  justify-content: end;
+  margin-left: auto;
+  cursor: pointer;
 }
 
 .profile__add-button:hover {
@@ -41,11 +39,17 @@
   .profile__edit-button {
     width: 1.25rem;
     height: 1.25rem;
+    left: auto;
+    margin-left: auto;
+    margin-right: 1rem;
   }
 
   .profile__add-button {
-    width: 7rem;
+    width: 4.6875rem; /* Mitad del ancho original */
     height: 2.5rem;
+    top: auto;
+    left: auto;
+    margin: 0 auto;
   }
 }
 
@@ -53,10 +57,17 @@
   .profile__edit-button {
     width: 1rem;
     height: 1rem;
+    left: 10%;
+    margin-left: auto;
+    margin-right: 1rem;
   }
 
   .profile__add-button {
-    width: 100%;
+    width: 45%; /* Más estrecho para pantallas pequeñas */
     height: 2.25rem;
+    top: auto;
+    left: 10%;
+    transform: translateX(-50%);
+    margin-bottom: 1rem;
   }
 }
